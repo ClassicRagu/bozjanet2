@@ -17,7 +17,7 @@ import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
 
 const bounds = [
   [34, 9],
-  [32, 11],
+  [32, 11.4],
 ];
 
 function ZadnorFragmentMap() {
@@ -47,7 +47,7 @@ function ZadnorFragmentMap() {
       >
         <div style={{ width: "100%", height: "600px" }} className="App">
           <MapContainer
-            center={[33, 10]}
+            center={[33, 10.18]}
             zoom={8.499}
             maxZoom={11}
             minZoom={8.499}
