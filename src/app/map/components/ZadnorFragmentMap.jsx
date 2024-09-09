@@ -56,7 +56,7 @@ function ZadnorFragmentMap() {
           >
             {fragment && fragments[fragment].Dal ? (
               <Marker
-                position={[33.6, 10.15]}
+                position={[33.6, 10.4]}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",
