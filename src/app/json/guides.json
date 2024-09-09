@@ -104,7 +104,7 @@
   },
   {
     "Name": "About",
-    "Guides": [],
+    "Guides": [["GitHub Repo", "https://github.com/ClassicRagu/bozjanet2"]],
     "Additional": ["This site is developed and maintained by (Coeurl) Celliera Tsukemeownya."]
   }
 ]
