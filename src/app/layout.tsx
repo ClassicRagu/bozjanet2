@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Box, Button, Grid2 } from "@mui/material";
+import NextLink from 'next/link';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -49,6 +50,7 @@ export default function RootLayout({
                 }}
               >
                 <Button
+                  component={NextLink}
                   size="large"
                   style={{ minWidth: "250px" }}
                   variant={"contained"}
@@ -67,6 +69,7 @@ export default function RootLayout({
                 }}
               >
                 <Button
+                  component={NextLink}
                   size="large"
                   variant={"contained"}
                   style={{ minWidth: "250px" }}
@@ -85,6 +88,7 @@ export default function RootLayout({
                 }}
               >
                 <Button
+                  component={NextLink}
                   size="large"
                   variant={"contained"}
                   style={{ minWidth: "250px" }}
