@@ -45,8 +45,8 @@ function Relic() {
           <Box
             component="img"
             sx={{
-              width: 800,
-              maxWidth: { xs: 350, sm: 500, md: 800 },
+              width: "100%",
+              height: "auto"
             }}
             alt="The Omnifarm Pizza image"
             src="/omnifarm/PizzaOmnifarm.png"
@@ -57,8 +57,8 @@ function Relic() {
           <Box
             component="img"
             sx={{
-              width: 800,
-              maxWidth: { xs: 350, sm: 500, md: 800 },
+              width: "100%",
+              height: "auto",
               marginTop: "15px",
             }}
             alt="The actions list for omnifarms"
@@ -82,7 +82,9 @@ function Relic() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            maxWidth: { xs: 500, sm: 700, md: 900, lg: 1200 },
+            width: "100%",
+            height: "auto",
+            maxWidth: 1300
           }}
           src="/omnifarm/PizzaOmnifarm.png"
         />
@@ -100,8 +102,9 @@ function Relic() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            maxWidth: { xs: 500, sm: 700, md: 900, lg: 1200 },
-            minWidth: { md: 900, lg: 1200 },
+            width: "100%",
+            height: "auto",
+            maxWidth: 1300
           }}
           src="/omnifarm/ActionsOmnifarm.png"
         />
