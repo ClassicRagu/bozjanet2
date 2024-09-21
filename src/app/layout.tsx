@@ -33,7 +33,7 @@ export default function RootLayout({
               spacing={2}
               style={{
                 minHeight: "75px",
-                maxWidth: "1000px",
+                maxWidth: "1250px",
                 marginBottom: "5px",
                 alignItems: "top",
                 justifyContent: "center",
@@ -95,6 +95,25 @@ export default function RootLayout({
                   href="/map"
                 >
                   Fragment Map
+                </Button>
+              </Grid2>
+              <Grid2
+                style={{
+                  display: "flex",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  maxHeight: "50px",
+                  minWidth: "250px",
+                }}
+              >
+                <Button
+                  component={NextLink}
+                  size="large"
+                  variant={"contained"}
+                  style={{ minWidth: "250px" }}
+                  href="/omnifarm"
+                >
+                  Omnifarm (Temp)
                 </Button>
               </Grid2>
             </Grid2>
