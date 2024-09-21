@@ -48,7 +48,7 @@ function Relic() {
               width: 800,
               maxWidth: { xs: 350, sm: 500, md: 800 },
             }}
-            alt="The house from the offer."
+            alt="The Omnifarm Pizza image"
             src="/omnifarm/PizzaOmnifarm.png"
             onClick={() => {
               setPizzaModelState(true);
@@ -61,7 +61,7 @@ function Relic() {
               maxWidth: { xs: 350, sm: 500, md: 800 },
               marginTop: "15px",
             }}
-            alt="The house from the offer."
+            alt="The actions list for omnifarms"
             src="/omnifarm/ActionsOmnifarm.png"
             onClick={() => {
               setLoadoutModelState(true);

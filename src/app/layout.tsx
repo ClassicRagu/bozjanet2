@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Box, Button, Grid2 } from "@mui/material";
-import NextLink from 'next/link';
+import NextLink from "next/link";
 import "./globals.css";
+
+const routes = [
+  { name: "FAQ", route: "/faq" },
+  { name: "I'm Here For Guides", route: "/" },
+  { name: "Fragment Map", route: "/map" },
+  { name: "Omnifarm (Temp)", route: "/omnifarm" },
+];
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,82 +47,28 @@ export default function RootLayout({
                 width: "100%",
               }}
             >
-              <Grid2
-                style={{
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  maxHeight: "50px",
-                  minWidth: "250px",
-                }}
-              >
-                <Button
-                  component={NextLink}
-                  size="large"
-                  style={{ minWidth: "250px" }}
-                  variant={"contained"}
-                  href="/faq"
+              {routes.map((route,index) => (
+                <Grid2
+                  key={`${route.name}-${index}`}
+                  style={{
+                    display: "flex",
+                    alignContent: "center",
+                    justifyContent: "center",
+                    maxHeight: "50px",
+                    minWidth: "250px",
+                  }}
                 >
-                  FAQ
-                </Button>
-              </Grid2>
-              <Grid2
-                style={{
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  maxHeight: "50px",
-                  minWidth: "250px",
-                }}
-              >
-                <Button
-                  component={NextLink}
-                  size="large"
-                  variant={"contained"}
-                  style={{ minWidth: "250px" }}
-                  href="/"
-                >
-                  I&apos;m here for Guides
-                </Button>
-              </Grid2>
-              <Grid2
-                style={{
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  maxHeight: "50px",
-                  minWidth: "250px",
-                }}
-              >
-                <Button
-                  component={NextLink}
-                  size="large"
-                  variant={"contained"}
-                  style={{ minWidth: "250px" }}
-                  href="/map"
-                >
-                  Fragment Map
-                </Button>
-              </Grid2>
-              <Grid2
-                style={{
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  maxHeight: "50px",
-                  minWidth: "250px",
-                }}
-              >
-                <Button
-                  component={NextLink}
-                  size="large"
-                  variant={"contained"}
-                  style={{ minWidth: "250px" }}
-                  href="/omnifarm"
-                >
-                  Omnifarm (Temp)
-                </Button>
-              </Grid2>
+                  <Button
+                    component={NextLink}
+                    size="large"
+                    style={{ minWidth: "250px" }}
+                    variant={"contained"}
+                    href={route.route}
+                  >
+                    {route.name}
+                  </Button>
+                </Grid2>
+              ))}
             </Grid2>
           </Box>
         </div>
