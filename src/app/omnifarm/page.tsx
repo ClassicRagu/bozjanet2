@@ -1,14 +1,7 @@
 "use client";
 import * as React from "react";
 import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Modal,
-  Typography,
+  Box, Card, Modal
 } from "@mui/material";
 
 const style = {
@@ -19,13 +12,8 @@ const style = {
 };
 
 function Relic() {
-  const [pizzaModelState, usePizzaModelState] = React.useState(false);
-  const handlePizzaOpen = () => usePizzaModelState(true);
-  const handlePizzaClose = () => usePizzaModelState(false);
-
-  const [loadoutModelState, useLoadoutModelState] = React.useState(false);
-  const handleLoadoutOpen = () => useLoadoutModelState(true);
-  const handleLoadoutClose = () => useLoadoutModelState(false);
+  const [pizzaModelState, setPizzaModelState] = React.useState(false);
+  const [loadoutModelState, setLoadoutModelState] = React.useState(false);
 
   return (
     <>
@@ -63,7 +51,7 @@ function Relic() {
             alt="The house from the offer."
             src="/omnifarm/PizzaOmnifarm.png"
             onClick={() => {
-              handlePizzaOpen();
+              setPizzaModelState(true);
             }}
           />
           <Box
@@ -71,19 +59,19 @@ function Relic() {
             sx={{
               width: 800,
               maxWidth: { xs: 350, sm: 500, md: 800 },
-              marginTop: "15px"
+              marginTop: "15px",
             }}
             alt="The house from the offer."
             src="/omnifarm/ActionsOmnifarm.png"
             onClick={() => {
-              handleLoadoutOpen();
+              setLoadoutModelState(true);
             }}
           />
         </Card>
       </Box>
       <Modal
         open={pizzaModelState}
-        onClose={handlePizzaClose}
+        onClose={() => setPizzaModelState(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -101,7 +89,7 @@ function Relic() {
       </Modal>
       <Modal
         open={loadoutModelState}
-        onClose={handleLoadoutClose}
+        onClose={() => setLoadoutModelState(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -113,7 +101,7 @@ function Relic() {
             left: "50%",
             transform: "translate(-50%, -50%)",
             maxWidth: { xs: 500, sm: 700, md: 900, lg: 1200 },
-            minWidth: {md: 900,lg: 1200}
+            minWidth: { md: 900, lg: 1200 },
           }}
           src="/omnifarm/ActionsOmnifarm.png"
         />
