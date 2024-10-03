@@ -39,27 +39,35 @@ function RelicStep5() {
           <a href="https://ffxiv.consolegameswiki.com/wiki/Timeworn_Artifact">
             Timeworn Artifacts
           </a>
-          <br />
-          <br />
-          This step only has two ways to complete it and it depends on if you
-          just want to finish quickly or go for the &quot;The Necromancer&quot; title.
-          <br />
-          <br />
-          If you want to go as fast as possible, Delubrum Reginae is the way to
-          go as it drops 3 Timeworn Artifacts every clear and can combo with
-          step 6 for Raw Emotions if you are making multiple weapons.
-          <br />
-          <br />
-          Parties of 24 rarely fill for DRN now so I suggest setting up a party
-          with either 5 or 8 people. If you are queuing with less than 24 people
-          you will be required to wait for 10 minutes before it puts you in
-          instance.
-          <br />
-          <br />
-          The speed of this step heavily relies on the actions and essences people are using in DRN. If you are with 8 people <a href="https://i.imgur.com/OmaJ15C.png">use this guide</a> and if you are with 5 people <a href="https://i.imgur.com/tjgIByv.png">use this guide.</a>
-          <br />
-          <br />
-          This is however, the perfect step for those who want to get the title &quot;The Necromancer&quot; as you can get progress towards this step and work towards a solo clear of Palace of the Dead at the same time.
+          <p>
+            This step only has two ways to complete it and it depends on if you
+            just want to finish quickly or go for the &quot;The
+            Necromancer&quot; title.
+          </p>
+          <p>
+            If you want to go as fast as possible, Delubrum Reginae is the way
+            to go as it drops 3 Timeworn Artifacts every clear and can combo
+            with step 6 for Raw Emotions if you are making multiple weapons.
+          </p>
+          <p>
+            Parties of 24 rarely fill for DRN now so I suggest setting up a
+            party with either 5 or 8 people. If you are queuing with less than
+            24 people you will be required to wait for 10 minutes before it puts
+            you in instance.
+          </p>
+          <p>
+            The speed of this step heavily relies on the actions and essences
+            people are using in DRN. If you are with 8 people{" "}
+            <a href="https://i.imgur.com/OmaJ15C.png">use this guide</a> and if
+            you are with 5 people{" "}
+            <a href="https://i.imgur.com/tjgIByv.png">use this guide.</a>
+          </p>
+          <p>
+            This is however, the perfect step for those who want to get the
+            title &quot;The Necromancer&quot; as you can get progress towards
+            this step and work towards a solo clear of Palace of the Dead at the
+            same time.
+          </p>
         </AccordionDetails>
       </Accordion>
     </>

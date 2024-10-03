@@ -48,11 +48,22 @@ function OneTimeStep1() {
               </a>
             </li>
           </ul>
-          This one time step is the only step that cannot be completed at all in Bozja.
-          <br />
-          <br />
-          Haunting memories drop 3 at a time from the level 60 Alliance Raids while Vexatious memories drop 3 at a time from the level 70 Alliance Raids.<br/><br/>
-          According <a href="https://ffxiv.consolegameswiki.com/wiki/Resistance_Weapons">ConsoleGamesWiki</a>, they also drop at an estimated 61% per FATE completed in Stormblood Areas with Haunting dropping from Gyr Abania and Vexatious dropping from Othard.
+          This one time step is the only step that cannot be completed at all in
+          Bozja.
+          <p>
+            Haunting memories drop 3 at a time from the level 60 Alliance Raids
+            while Vexatious memories drop 3 at a time from the level 70 Alliance
+            Raids.
+            <br />
+            <br />
+            According{" "}
+            <a href="https://ffxiv.consolegameswiki.com/wiki/Resistance_Weapons">
+              ConsoleGamesWiki
+            </a>
+            , they also drop at an estimated 61% per FATE completed in
+            Stormblood Areas with Haunting dropping from Gyr Abania and
+            Vexatious dropping from Othard.
+          </p>
         </AccordionDetails>
       </Accordion>
     </>

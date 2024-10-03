@@ -8,6 +8,7 @@ const routes = [
   { name: "FAQ", route: "/faq" },
   { name: "I'm Here For Guides", route: "/" },
   { name: "Fragment Map", route: "/map" },
+  { name: "Relic Guide", route: "/relic" },
 ];
 
 const inter = Inter({ subsets: ["latin"] });
@@ -46,7 +47,7 @@ export default function RootLayout({
                 width: "100%",
               }}
             >
-              {routes.map((route,index) => (
+              {routes.map((route, index) => (
                 <Grid2
                   key={`${route.name}-${index}`}
                   style={{

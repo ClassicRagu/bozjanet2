@@ -35,17 +35,14 @@ function RelicStep3() {
           <strong>Step 3: The Will to Resist</strong>
         </AccordionSummary>
         <AccordionDetails>
-          <p>
-            Step three requires you to obtain 6{" "}
-            <a href="https://ffxiv.consolegameswiki.com/wiki/Bitter_Memory_of_the_Dying">
-              Bitter Memory of the Dying
-            </a>
-          </p>
+          Step three requires you to obtain 6{" "}
+          <a href="https://ffxiv.consolegameswiki.com/wiki/Bitter_Memory_of_the_Dying">
+            Bitter Memory of the Dying
+          </a>
           <p>
             <u>
-              This is step almost idenical to step 2. I&apos;ve
-              underlined some key differences for those who have already read
-              that step.
+              This is step almost idenical to step 2. I&apos;ve underlined some
+              key differences for those who have already read that step.
             </u>
           </p>
           <p>
