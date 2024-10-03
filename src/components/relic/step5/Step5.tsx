@@ -32,7 +32,23 @@ function RelicStep5() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <strong>Step 5: A New Path of Resistance</strong>
+          <div>
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+              alt="TimewornArtifact"
+              src="/relic/step5/TimewornArtifact.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
+              <strong>Step 5: A New Path of Resistance</strong>
+            </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           Step five requires you to obtain 15{" "}

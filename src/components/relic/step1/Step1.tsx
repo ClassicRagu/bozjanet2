@@ -32,15 +32,31 @@ function RelicStep1() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <strong>Step 1: Resistance Is (Not) Futile</strong>
+          <div>
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px"
+              }}
+              alt="Scalepower"
+              src="/relic/step1/Scalepowder.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
+              <strong>Step 1: Resistance Is (Not) Futile</strong>
+            </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           Step one requires you to obtain 4{" "}
           <a href="https://ffxiv.consolegameswiki.com/wiki/Thavnairian_Scalepowder">
             Thavnairian Scalepowder
           </a>{" "}
-          which can be bought for a total of 1000 Allagan Tomestones of
-          Poetics in Mor Dhona.
+          which can be bought for a total of 1000 Allagan Tomestones of Poetics
+          in Mor Dhona.
           <br />
           These can be obtained from Auriana in the location shown below in the
           &quot;Special Arms&quot; menu.

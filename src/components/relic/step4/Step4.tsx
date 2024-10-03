@@ -32,7 +32,23 @@ function RelicStep4() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <strong>Step 4: Change of Arms</strong>
+          <div>
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+              alt="LoathsomeMemory"
+              src="/relic/step4/LoathsomeMemory.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
+              <strong>Step 4: Change of Arms</strong>
+            </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           Step four requires you to obtain 15{" "}

@@ -32,7 +32,47 @@ function RelicStep2() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
+          <div>
+          <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px"
+              }}
+              alt="TorturedMemory"
+              src="/relic/step2/TorturedMemory.png"
+            />
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px"
+              }}
+              alt="SorrowfulMemory"
+              src="/relic/step2/SorrowfulMemory.png"
+            />
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px"
+              }}
+              alt="HarrowingMemory"
+              src="/relic/step2/HarrowingMemory.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
           <strong>Step 2: For Want of a Memory</strong>
+          </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           Step two requires you to obtain 20 of 3 types of memories:

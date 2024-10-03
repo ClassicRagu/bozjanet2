@@ -32,7 +32,23 @@ function RelicStep6() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <strong>Step 6: Irresistible</strong>
+          <div>
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+              alt="RawEmotion"
+              src="/relic/step6/RawEmotion.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
+              <strong>Step 6: Irresistible</strong>
+            </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           Step six requires you to obtain 15{" "}

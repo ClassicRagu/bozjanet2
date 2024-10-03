@@ -32,7 +32,23 @@ function RelicStep3() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <strong>Step 3: The Will to Resist</strong>
+          <div>
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+              alt="BitterMemory"
+              src="/relic/step3/BitterMemory.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
+              <strong>Step 3: The Will to Resist</strong>
+            </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           Step three requires you to obtain 6{" "}

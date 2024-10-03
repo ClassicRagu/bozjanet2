@@ -32,7 +32,35 @@ function OneTimeStep1() {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <strong>One Time Grind #1: The Resistance Remembers</strong>
+          <div>
+          <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+              alt="HauntingMemory"
+              src="/relic/onetimestep1/HauntingMemory.png"
+            />
+            <Box
+              component="img"
+              sx={{
+                maxWidth: "30px",
+                height: "auto",
+                width: "auto",
+                verticalAlign: "middle",
+                marginRight: "5px",
+              }}
+              alt="VexatiousMemory"
+              src="/relic/onetimestep1/VexatiousMemory.png"
+            />
+            <span style={{ verticalAlign: "middle" }}>
+              <strong>One Time Grind #1: The Resistance Remembers</strong>
+            </span>
+          </div>
         </AccordionSummary>
         <AccordionDetails>
           This one time step requires you to obtain 18 of 2 types of memories:{" "}
