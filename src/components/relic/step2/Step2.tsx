@@ -5,12 +5,10 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box,
-  Modal,
+  Box
 } from "@mui/material";
 import { useAtom } from "jotai";
 import Link from "next/link";
-import * as React from "react";
 
 function RelicStep2() {
   const [openRelic, setOpenRelic] = useAtom(openRelicState);

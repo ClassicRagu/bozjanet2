@@ -4,13 +4,6 @@ import {
   Box, Card, Modal
 } from "@mui/material";
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-75%, -50%)",
-};
-
 function Relic() {
   const [pizzaModelState, setPizzaModelState] = React.useState(false);
   const [loadoutModelState, setLoadoutModelState] = React.useState(false);

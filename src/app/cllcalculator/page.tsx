@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Avatar, Box, Button, Card, Grid2, Modal } from "@mui/material";
+import { Avatar, Box, Button, Card, Grid2 } from "@mui/material";
 
 function CLL() {
   const [startTime, setStartTime] = React.useState<any>();

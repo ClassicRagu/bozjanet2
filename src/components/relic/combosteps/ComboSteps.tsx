@@ -4,13 +4,9 @@ import { ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
   AccordionDetails,
-  AccordionSummary,
-  Box,
-  Modal,
+  AccordionSummary
 } from "@mui/material";
 import { useAtom } from "jotai";
-import Link from "next/link";
-import * as React from "react";
 
 function ComboSteps() {
   const [openRelic, setOpenRelic] = useAtom(openRelicState);

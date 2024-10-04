@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import * as React from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { Card } from "@mui/material";
@@ -84,7 +84,7 @@ function FragmentLookup() {
               <Autocomplete
                 inputValue={fragmentInputValue}
                 value={fragmentInputValue}
-                onInputChange={(event, newInputValue, reason) => {
+                onInputChange={(event, newInputValue) => {
                   setFragmentInputValue(newInputValue);
                 }}
                 onChange={(event, newValue) => {

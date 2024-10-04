@@ -1,9 +1,11 @@
 "use client";
 import * as React from "react";
-import { Avatar, Box, Button, Card, Grid2, Modal } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import RelicGuide from "@/components/relic/RelicGuide";
+import RelicTracker from "@/components/relic/RelicTracker";
 
 function Relic() {
+  const [viewToggle] = React.useState(false);
 
   return (
     <Box
@@ -27,7 +29,7 @@ function Relic() {
         }}
       >
         <h2>Bozja Relic Weapons</h2>
-        <RelicGuide/>
+        {!viewToggle ? <RelicGuide/> : <RelicTracker />}
       </Card>
     </Box>
   );
