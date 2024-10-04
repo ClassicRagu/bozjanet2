@@ -8,7 +8,6 @@ const basicSX = {
   maxWidth: "50px",
   width: "auto",
   verticalAlign: "middle",
-  marginRight: "5px",
 };
 
 type IconBoxProps = {
@@ -32,8 +31,16 @@ function IconBox(iconBoxProps: IconBoxProps) {
       }}
       onClick={() => {
         const updatedArray = [...isGreyscale];
-        updatedArray[iconBoxProps.step][iconBoxProps.job] =
-          !isGreyscale[iconBoxProps.step][iconBoxProps.job];
+        const updatedVal = !isGreyscale[iconBoxProps.step][iconBoxProps.job];
+        if(updatedVal){
+          for (let i = iconBoxProps.step; i >= 0; i--) {
+            updatedArray[i][iconBoxProps.job] = updatedVal
+          }
+        } else {
+          for (let i = iconBoxProps.step; i < 6; i++){
+            updatedArray[i][iconBoxProps.job] = updatedVal
+          }
+        }
         setIsGreyscale(updatedArray);
       }}
       alt={iconBoxProps.altText}
