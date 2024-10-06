@@ -35,6 +35,12 @@ function Relic() {
               Full Guide
             </a>
           </h2>
+          <p>
+            {"Node 3: "}
+            <a href="https://docs.google.com/document/d/14xI0XLeknZfqFDlD3KVynCyVwTTYNuOPsdfymtWPf1c">
+              {"Very Greedy's Rank V Guide"}
+            </a>
+          </p>
           <Box
             component="img"
             sx={{

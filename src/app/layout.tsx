@@ -9,6 +9,7 @@ const routes = [
   { name: "I'm Here For Guides", route: "/" },
   { name: "Fragment Map", route: "/map" },
   { name: "Relic Weapons", route: "/relic" },
+  { name: "Omnifarm (Temp)", route: "/omnifarm"}
 ];
 
 const inter = Inter({ subsets: ["latin"] });
