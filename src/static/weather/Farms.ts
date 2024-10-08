@@ -4,21 +4,21 @@ export const listEurekaFarms = [
     name: "Pagos",
     farms: [
       {
-        name: "Thunder Box",
+        name: "Thunder Cold Box",
         info: {
           weather: "Thunder",
           time: -1,
         },
       },
       {
-        name: "Blizzards Box",
+        name: "Blizzards Cold Box",
         info: {
           weather: "Blizzards",
           time: -1,
         },
       },
       {
-        name: "Fair Skies Box",
+        name: "Fair Skies Cold Box",
         info: {
           weather: "Fair Skies",
           time: -1,
@@ -35,6 +35,13 @@ export const listEurekaFarms = [
           weather: "Umbral Wind",
           time: -1,
         },
+      },
+      {
+        name: "Mitigative Logos Thunder",
+        info: {
+          weather: "Thunder",
+          time: -1,
+        },
       }
     ],
   },
@@ -46,6 +53,13 @@ export const listEurekaFarms = [
         info: {
           weather: "Snow",
           time: 1,
+        },
+      },
+      {
+        name: "Offensive Logos",
+        info: {
+          weather: "Snow",
+          time: -1,
         },
       },
     ],

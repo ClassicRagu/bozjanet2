@@ -140,6 +140,10 @@ function Weather() {
               value={zoneValue}
               id="combo-box-demo"
               label={"Zone"}
+              style={{
+                minWidth: "350px",
+                float: "left",
+              }}
             >
               {listAreas.map((x) => {
                 return (
@@ -170,6 +174,10 @@ function Weather() {
                 value={farmValue}
                 id="combo-box-demo"
                 label={"Farm"}
+                style={{
+                  minWidth: "350px",
+                  float: "left",
+                }}
               >
                 {listEurekaFarms
                   .find((x) => x.name == zoneValue)
