@@ -9,7 +9,11 @@ const EIGHT_HOURS = 8 * 175 * 1000;
 export const findSuperMoistWindows = (
   startTime: Date,
   weeks: number,
-  snows: number
+  snows: number,
+  zone: string,
+  weather: string,
+  time: number,
+  
 ): SnowTimes[] => {
   let timeArr: SnowTimes[] = [];
   let lastSnow = 0;
@@ -24,8 +28,8 @@ export const findSuperMoistWindows = (
     i = i + EIGHT_HOURS
   ) {
     const increment = getIncrement(new Date(i));
-    if (snows == 2) {
-      if (increment < 16 && getWeather(getChance(new Date(i))) == "Snow") {
+    if (time == 1 && snows == 2) {
+      if (increment < 16 && getWeather(getChance(new Date(i)), zone) == weather) {
         if (lastSnow > 0 && increment == 8) {
           timeArr = [
             ...timeArr,
@@ -37,7 +41,7 @@ export const findSuperMoistWindows = (
         lastSnow = 0;
       }
     } else {
-      const snowWeather = getWeather(getChance(new Date(i))) == "Snow"
+      const snowWeather = getWeather(getChance(new Date(i)), zone) == weather
       if(snowWeather && lastSnow == 0){
         storedStart = new Date(i)
         lastSnow = 1;
@@ -47,6 +51,7 @@ export const findSuperMoistWindows = (
           ...timeArr,
           { startTime: storedStart, startTimeET: startingIncrement == 0 ? "4pm" : startingIncrement == 8 ? "12am" : "8am" ,endTime: new Date(i) },
         ];
+        lastSnow = 0
       } else if (snowWeather) {
         lastSnow += 1;
       } else {
