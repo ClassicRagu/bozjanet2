@@ -162,6 +162,7 @@ function Weather() {
               <TableHead>
                 <TableRow>
                   <TableCell>Time</TableCell>
+                  <TableCell>ET</TableCell>
                   <TableCell>Timestamp</TableCell>
                 </TableRow>
               </TableHead>
@@ -171,6 +172,9 @@ function Weather() {
                     <TableRow key={`supermoist-${index}`}>
                       <TableCell key={`${index}`}>
                         {x.startTime.toLocaleString()}
+                      </TableCell>
+                      <TableCell>
+                        {x.startTimeET}
                       </TableCell>
                       <TableCell>
                         {`<t:${x.startTime.getTime() / 1000}:F>`}

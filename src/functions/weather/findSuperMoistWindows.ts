@@ -29,7 +29,7 @@ export const findSuperMoistWindows = (
         if (lastSnow > 0 && increment == 8) {
           timeArr = [
             ...timeArr,
-            { startTime: new Date(i - EIGHT_HOURS), endTime: new Date(i) },
+            { startTime: new Date(i - EIGHT_HOURS), startTimeET: "4pm" , endTime: new Date(i) },
           ];
         }
         lastSnow = 1;
@@ -42,9 +42,10 @@ export const findSuperMoistWindows = (
         storedStart = new Date(i)
         lastSnow = 1;
       } else if (snowWeather && lastSnow == (snows - 1)){
+        const startingIncrement = getIncrement(storedStart)
         timeArr = [
           ...timeArr,
-          { startTime: storedStart, endTime: new Date(i) },
+          { startTime: storedStart, startTimeET: startingIncrement == 0 ? "4pm" : startingIncrement == 8 ? "12am" : "8am" ,endTime: new Date(i) },
         ];
       } else if (snowWeather) {
         lastSnow += 1;
