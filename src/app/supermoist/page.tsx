@@ -1,27 +1,30 @@
 "use client";
 import { findSuperMoistWindows } from "@/functions/weather/findSuperMoistWindows";
-import { getChance } from "@/functions/weather/getChance";
-import { getWeather } from "@/functions/weather/getWeather";
 import { listAreas } from "@/static/weather/Areas";
 import { listEurekaFarms } from "@/static/weather/Farms";
 import { FarmInfo } from "@/types/weather/FarmInfo";
+import { ExpandMore } from "@mui/icons-material";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Avatar,
   Box,
   Card,
   FormControl,
   Grid2,
   InputLabel,
   MenuItem,
+  Modal,
   Paper,
   Select,
-  Slider,
-  Table,
+  Slider, Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
+  Typography
 } from "@mui/material";
 import React from "react";
 
@@ -47,6 +50,10 @@ const marks = [
 ];
 
 const snow = [
+  {
+    value: 1,
+    label: "1",
+  },
   {
     value: 2,
     label: "2",
@@ -84,6 +91,7 @@ function Weather() {
     weather: "Snow",
     time: 1,
   });
+  const [scalpowderModelState, setScalpowderModelState] = React.useState(false);
 
   React.useEffect(() => {
     setSnowState(
@@ -155,7 +163,7 @@ function Weather() {
             </Select>
           </FormControl>
           {zoneValue != "" ? (
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <FormControl sx={{ m: 1 }}>
               <InputLabel id="demo-simple-select-label">Farm</InputLabel>
               <Select
                 onChange={(event) => {
@@ -182,28 +190,105 @@ function Weather() {
                 {listEurekaFarms
                   .find((x) => x.name == zoneValue)
                   ?.farms.map((x) => {
-                    return (
-                      <MenuItem key={x.name} value={x.name}>
-                        {x.name}
-                      </MenuItem>
-                    );
-                  })}
+                      return (
+                        <MenuItem value={x.name} key={x.name}>
+                          <div style={{display:"flex"}}>
+                            <Avatar
+                              sx={{ width: 22, height: 22, marginRight:"5px" }}
+                              variant="rounded"
+                              src={x.weatherIcon}
+                            />
+                            <Typography>{x.name}</Typography>
+                          </div>
+                        </MenuItem>
+                      );
+                    })}
               </Select>
             </FormControl>
           ) : null}
         </div>
         {zoneValue != "" && farmValue != "" ? (
           <>
+            {
+              // This will be implemented later
+              false ? (
+                <div
+                  style={{
+                    justifyContent: "center",
+                    display: "flex",
+                    marginTop: "10px",
+                  }}
+                >
+                  <Accordion style={{ maxWidth: "75%" }}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMore />}
+                      aria-controls="panel1-content"
+                      id="panel1-header"
+                    >
+                      <span style={{ verticalAlign: "middle" }}>
+                        <strong>Guide</strong>
+                      </span>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      Step one requires you to obtain 4{" "}
+                      <a href="https://ffxiv.consolegameswiki.com/wiki/Thavnairian_Scalepowder">
+                        Thavnairian Scalepowder
+                      </a>{" "}
+                      which can be bought for a total of 1000 Allagan Tomestones
+                      of Poetics in Mor Dhona.
+                      <br />
+                      These can be obtained from Auriana in the location shown
+                      below in the &quot;Special Arms&quot; menu.
+                      <br />
+                      <br />
+                      <Box
+                        component="img"
+                        sx={{
+                          width: "50%",
+                          height: "auto",
+                        }}
+                        alt="Scalepower Location"
+                        src="/relic/step1/ScalepowderLocation.PNG"
+                        onClick={() => {
+                          setScalpowderModelState(true);
+                        }}
+                      />
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+              ) : null
+            }
+            <Modal
+              open={scalpowderModelState}
+              onClose={() => setScalpowderModelState(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                component="img"
+                sx={{
+                  position: "absolute" as "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "100%",
+                  height: "auto",
+                  maxWidth: 900,
+                }}
+                src="/relic/step1/ScalepowderLocation.PNG"
+              />
+            </Modal>
             <Grid2
               container
               spacing={2}
               style={{
                 minHeight: "75px",
                 maxWidth: "1000px",
-                marginBottom: "5px",
+                marginBottom: "10px",
                 alignItems: "top",
                 justifyContent: "center",
                 width: "100%",
+                marginTop: "10px",
               }}
             >
               <Grid2
@@ -246,17 +331,13 @@ function Weather() {
                     if (typeof newValue == "number") setFindSnowState(newValue);
                   }}
                   max={5}
-                  min={2}
+                  min={1}
                   step={1}
                   valueLabelDisplay="off"
                   marks={snow}
                 />
               </Grid2>
             </Grid2>
-            <p>
-              Current Hydatos Weather:{" "}
-              {getWeather(getChance(new Date()), zoneValue)}
-            </p>
             <div
               style={{
                 justifyContent: "center",

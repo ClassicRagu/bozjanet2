@@ -5,6 +5,7 @@ export const listEurekaFarms = [
     farms: [
       {
         name: "Thunder Cold Box",
+        weatherIcon: "/weathericons/Thunder.png",
         info: {
           weather: "Thunder",
           time: -1,
@@ -12,6 +13,7 @@ export const listEurekaFarms = [
       },
       {
         name: "Blizzards Cold Box",
+        weatherIcon: "/weathericons/Blizzards.png",
         info: {
           weather: "Blizzards",
           time: -1,
@@ -19,6 +21,7 @@ export const listEurekaFarms = [
       },
       {
         name: "Fair Skies Cold Box",
+        weatherIcon: "/weathericons/Fair Skies.png",
         info: {
           weather: "Fair Skies",
           time: -1,
@@ -31,6 +34,7 @@ export const listEurekaFarms = [
     farms: [
       {
         name: "Heat Box",
+        weatherIcon: "/weathericons/UmbralWind.png",
         info: {
           weather: "Umbral Wind",
           time: -1,
@@ -38,6 +42,7 @@ export const listEurekaFarms = [
       },
       {
         name: "Mitigative Logos Thunder",
+        weatherIcon: "/weathericons/Thunder.png",
         info: {
           weather: "Thunder",
           time: -1,
@@ -50,6 +55,7 @@ export const listEurekaFarms = [
     farms: [
       {
         name: "Super Moist",
+        weatherIcon: "/weathericons/Snow.png",
         info: {
           weather: "Snow",
           time: 1,
@@ -57,6 +63,7 @@ export const listEurekaFarms = [
       },
       {
         name: "Offensive Logos",
+        weatherIcon: "/weathericons/Snow.png",
         info: {
           weather: "Snow",
           time: -1,
