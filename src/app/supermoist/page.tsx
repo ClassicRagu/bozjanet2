@@ -6,10 +6,11 @@ import WeatherTable from "@/components/supermoist/WeatherTable";
 import { getWindows } from "@/functions/weather/getWindows";
 import { FarmInfo } from "@/types/weather/FarmInfo";
 import { WindowTimes } from "@/types/weather/WindowTimes";
-import { Box, Card } from "@mui/material";
+import { Box, Card, FormControlLabel, FormGroup, Switch } from "@mui/material";
 import React from "react";
 
 function Weather() {
+  const [longerWindowState, setLongerWindowState] = React.useState(false);
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
   const [snowState, setSnowState] = React.useState<WindowTimes[] | null>(null);
@@ -82,6 +83,17 @@ function Weather() {
               setFindSnowState={setFindSnowState}
               findSnowState={findSnowState}
             />
+            <FormGroup style={{ display: "flex", alignItems: "center" }}>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={longerWindowState}
+                    onChange={(e) => setLongerWindowState(e.target.checked)}
+                  />
+                }
+                label="Show longer windows"
+              />
+            </FormGroup>
             <div
               style={{
                 justifyContent: "center",
@@ -93,9 +105,7 @@ function Weather() {
               {
                 // Ensure we have a snowState
                 snowState != null ? (
-                  <WeatherTable
-                    snowState={snowState}
-                  />
+                  <WeatherTable snowState={snowState} longerWindowState={longerWindowState} findSnowState={findSnowState} />
                 ) : null
               }
             </div>
