@@ -3,6 +3,7 @@ import { getWindows } from "@/functions/weather/getWindows";
 import { listAreas } from "@/static/weather/Areas";
 import { listEurekaFarms } from "@/static/weather/Farms";
 import { FarmInfo } from "@/types/weather/FarmInfo";
+import { WindowTimes } from "@/types/weather/WindowTimes";
 import { ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
@@ -18,13 +19,14 @@ import {
   Modal,
   Paper,
   Select,
-  Slider, Table,
+  Slider,
+  Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Typography
+  Typography,
 } from "@mui/material";
 import React from "react";
 
@@ -75,16 +77,7 @@ const snow = [
 function Weather() {
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
-  const [snowState, setSnowState] = React.useState(() => {
-    return getWindows(
-      new Date(),
-      weekState,
-      findSnowState,
-      "Hydatos",
-      "Snow",
-      1
-    );
-  });
+  const [snowState, setSnowState] = React.useState<WindowTimes[] | null>(null);
   const [zoneValue, setZoneValue] = React.useState("Hydatos");
   const [farmValue, setFarmValue] = React.useState("Super Moist");
   const [farmInfo, setFarmInfo] = React.useState<FarmInfo>({
@@ -105,6 +98,12 @@ function Weather() {
       )
     );
   }, [weekState, findSnowState, zoneValue, farmInfo]);
+
+  React.useEffect(() => {
+    setSnowState(
+      getWindows(new Date(), 1, 2, "Hydatos", "Snow", 1)
+    );
+  }, []);
 
   return (
     <Box
@@ -190,19 +189,19 @@ function Weather() {
                 {listEurekaFarms
                   .find((x) => x.name == zoneValue)
                   ?.farms.map((x) => {
-                      return (
-                        <MenuItem value={x.name} key={x.name}>
-                          <div style={{display:"flex"}}>
-                            <Avatar
-                              sx={{ width: 22, height: 22, marginRight:"5px" }}
-                              variant="rounded"
-                              src={x.weatherIcon}
-                            />
-                            <Typography>{x.name}</Typography>
-                          </div>
-                        </MenuItem>
-                      );
-                    })}
+                    return (
+                      <MenuItem value={x.name} key={x.name}>
+                        <div style={{ display: "flex" }}>
+                          <Avatar
+                            sx={{ width: 22, height: 22, marginRight: "5px" }}
+                            variant="rounded"
+                            src={x.weatherIcon}
+                          />
+                          <Typography>{x.name}</Typography>
+                        </div>
+                      </MenuItem>
+                    );
+                  })}
               </Select>
             </FormControl>
           ) : null}
@@ -346,36 +345,43 @@ function Weather() {
                 marginBottom: "10px",
               }}
             >
-              <TableContainer component={Paper} style={{ width: "80%" }}>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Time</TableCell>
-                      <TableCell>ET</TableCell>
-                      {findSnowState > 1 ?
-                      <TableCell>Windows</TableCell>
-                    : null}
-                      <TableCell>Timestamp</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {snowState.map((x, index) => {
-                      return (
-                        <TableRow key={`supermoist-${index}`}>
-                          <TableCell key={`${index}`}>
-                            {x.startTime.toLocaleString()}
-                          </TableCell>
-                          <TableCell>{x.startTimeET}</TableCell>
-                          {findSnowState > 1 ?<TableCell>{x.totalWindows}</TableCell> : null}
-                          <TableCell>
-                            {`<t:${x.startTime.getTime() / 1000}:F>`}
-                          </TableCell>
+              {
+                // Ensure we have a snowState
+                snowState != null ? (
+                  <TableContainer component={Paper} style={{ width: "80%" }}>
+                    <Table>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Time</TableCell>
+                          <TableCell>ET</TableCell>
+                          {findSnowState > 1 ? (
+                            <TableCell>Windows</TableCell>
+                          ) : null}
+                          <TableCell>Timestamp</TableCell>
                         </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                      </TableHead>
+                      <TableBody>
+                        {snowState.map((x, index) => {
+                          return (
+                            <TableRow key={`supermoist-${index}`}>
+                              <TableCell key={`${index}`}>
+                                {x.startTime.toLocaleString()}
+                              </TableCell>
+                              <TableCell>{x.startTimeET}</TableCell>
+                              {findSnowState > 1 ? (
+                                <TableCell>{x.totalWindows}</TableCell>
+                              ) : null}
+                              <TableCell>
+                                {`<t:${x.startTime.getTime() / 1000}:F>`}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                ) : null
+              }
             </div>
           </>
         ) : null}
