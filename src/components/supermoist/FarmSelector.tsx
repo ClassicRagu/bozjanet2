@@ -65,7 +65,7 @@ function FarmSelector(props: FarmSelectorProps) {
                   listEurekaFarms
                     .find((x) => x.name == zoneValue)
                     ?.farms.find((x) => x.name == event.target.value)?.info ?? {
-                    weather: "",
+                    weathers: [""],
                     time: -1,
                   }
                 );
