@@ -32,35 +32,33 @@ export const findSuperMoistWindows = (
     new Date(startTime.getTime() + weeks * 6.048e8)
   ).getTime();
   let storedStart = new Date();
-  for (
-    let i = realStartTime;
-    i < endTime;
-    i = i + EIGHT_HOURS
+  let i = realStartTime
+  while (
+    i < endTime
   ) {
     const increment = getIncrement(new Date(i));
     const currentWeather = getWeather(getChance(new Date(i)), zone)
+    const snowWeather = currentWeather == weather
     if(snows == 1){
-      if(getWeather(getChance(new Date(i)), zone) == weather && (time != 1 || increment < 16)) {
+      if(snowWeather && (time != 1 || increment < 16)) {
         timeArr = [
           ...timeArr,
           { startTime: new Date(i), totalSnows: 1, startTimeET: translateStartTime(increment) , endTime: new Date(i) },
         ]
       }
     } else {
-      const snowWeather = currentWeather == weather
       if(snowWeather && lastSnow == 0 && checkForNightOnly(time, snows, increment)){
         storedStart = new Date(i)
         lastSnow = 1;
       } else if (snowWeather && lastSnow == (snows - 1)){
         const startingIncrement = getIncrement(storedStart)
-        let loopCount = 1
-        // Next commit will rewrite this entire for loop to be a while loop instead so this loop will change
-        while(loopCount > 0){
-          if(getWeather(getChance(new Date(i + (EIGHT_HOURS * loopCount))), zone) == weather){
+        i = i + EIGHT_HOURS
+        while(true){
+          if(getWeather(getChance(new Date(i)), zone) == weather){
+            i = i + EIGHT_HOURS
             lastSnow++
-            loopCount++
           } else {
-            loopCount = -1;
+            break;
           }
         }
 
@@ -69,12 +67,14 @@ export const findSuperMoistWindows = (
           { startTime: storedStart, totalSnows: lastSnow + 1, startTimeET: translateStartTime(startingIncrement), endTime: new Date(i) },
         ];
         lastSnow = 0
+        continue;
       } else if (snowWeather && checkForNightOnly(time, snows, increment)) {
         lastSnow += 1;
       } else {
         lastSnow = 0;
       }
     }
+    i = i + EIGHT_HOURS
   }
   return timeArr;
 };
