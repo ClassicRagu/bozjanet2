@@ -3,4 +3,5 @@ export type WindowTimes = {
   startTimeET: string,
   totalWindows: number;
   endTime: Date;
+  weathers: string[]
 };

@@ -16,7 +16,7 @@ function Weather() {
   const [zoneValue, setZoneValue] = React.useState("Hydatos");
   const [farmValue, setFarmValue] = React.useState("Super Moist");
   const [farmInfo, setFarmInfo] = React.useState<FarmInfo>({
-    weather: "Snow",
+    weathers: ["Snow"],
     time: 1,
   });
 
@@ -27,14 +27,14 @@ function Weather() {
         weekState,
         findSnowState,
         zoneValue,
-        farmInfo.weather,
+        farmInfo.weathers,
         farmInfo.time
       )
     );
   }, [weekState, findSnowState, zoneValue, farmInfo]);
 
   React.useEffect(() => {
-    setSnowState(getWindows(new Date(), 1, 2, "Hydatos", "Snow", 1));
+    setSnowState(getWindows(new Date(), 1, 2, "Hydatos", ["Snow"], 1));
   }, []);
 
   return (

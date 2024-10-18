@@ -7,7 +7,7 @@ export const listEurekaFarms = [
         name: "Thunder Cold Box",
         weatherIcon: "/weathericons/Thunder.png",
         info: {
-          weather: "Thunder",
+          weathers: ["Thunder"],
           time: -1,
         },
       },
@@ -15,7 +15,7 @@ export const listEurekaFarms = [
         name: "Blizzards Cold Box",
         weatherIcon: "/weathericons/Blizzards.png",
         info: {
-          weather: "Blizzards",
+          weathers: ["Blizzards"],
           time: -1,
         },
       },
@@ -23,7 +23,7 @@ export const listEurekaFarms = [
         name: "Fair Skies Cold Box",
         weatherIcon: "/weathericons/Fair Skies.png",
         info: {
-          weather: "Fair Skies",
+          weathers: ["Fair Skies"],
           time: -1,
         },
       },
@@ -34,9 +34,9 @@ export const listEurekaFarms = [
     farms: [
       {
         name: "Heat Box",
-        weatherIcon: "/weathericons/UmbralWind.png",
+        weatherIcon: "/weathericons/Umbral Wind.png",
         info: {
-          weather: "Umbral Wind",
+          weathers: ["Umbral Wind"],
           time: -1,
         },
       },
@@ -44,9 +44,17 @@ export const listEurekaFarms = [
         name: "Mitigative Logos Thunder",
         weatherIcon: "/weathericons/Thunder.png",
         info: {
-          weather: "Thunder",
+          weathers: ["Thunder"],
           time: -1,
         },
+      },
+      {
+        name: "Inimical Logos",
+        weatherIcon: "/weathericons/Snow.png",
+        info: {
+          weathers: ["Snow", "Blizzards"],
+          time: -1
+        }
       }
     ],
   },
@@ -57,7 +65,7 @@ export const listEurekaFarms = [
         name: "Super Moist",
         weatherIcon: "/weathericons/Snow.png",
         info: {
-          weather: "Snow",
+          weathers: ["Snow"],
           time: 1,
         },
       },
@@ -65,7 +73,23 @@ export const listEurekaFarms = [
         name: "Offensive Logos",
         weatherIcon: "/weathericons/Snow.png",
         info: {
-          weather: "Snow",
+          weathers: ["Snow"],
+          time: -1,
+        },
+      },
+      {
+        name: "Conceptual Logos",
+        weatherIcon: "/weathericons/Showers.png",
+        info: {
+          weathers: ["Snow","Showers"],
+          time: -1,
+        },
+      },
+      {
+        name: "Fundamental Logos",
+        weatherIcon: "/weathericons/Gloom.png",
+        info: {
+          weathers: ["Gloom","Snow"],
           time: -1,
         },
       },

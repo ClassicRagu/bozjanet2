@@ -32,7 +32,7 @@ export const getWindows = (
   weeks: number,
   windows: number,
   zone: string,
-  weather: string,
+  weathers: string[],
   time: number
 ): WindowTimes[] => {
   let timeArr: WindowTimes[] = [];
@@ -43,16 +43,20 @@ export const getWindows = (
   ).getTime();
   let storedStart = new Date();
   let storedIncrement = -1;
+  let storedWeathers = []
   let i = realStartTime;
   while (i < endTime) {
     const { currentWeather, increment } = getWeather(new Date(i), zone);
-    const validWeather = currentWeather == weather;
+    const validWeather = weathers.includes(currentWeather);
     if (validWeather) {
+      storedWeathers.push(currentWeather)
       storedStart = new Date(i);
       storedIncrement = increment;
       i = i + EIGHT_HOURS;
       while (true) {
-        if (getWeather(new Date(i), zone).currentWeather == weather) {
+        const newWeather = getWeather(new Date(i), zone).currentWeather
+        if (weathers.includes(newWeather)) {
+          storedWeathers.push(newWeather)
           i = i + EIGHT_HOURS;
           lastWeather++;
         } else {
@@ -67,6 +71,7 @@ export const getWindows = (
             totalWindows: lastWeather,
             startTimeET: translateStartTime(storedIncrement),
             endTime: new Date(i),
+            weathers: storedWeathers
           },
         ];
         lastWeather = 1;
@@ -81,11 +86,13 @@ export const getWindows = (
             totalWindows: lastWeather,
             startTimeET: translateStartTime(storedIncrement),
             endTime: new Date(i),
+            weathers: storedWeathers
           },
         ];
         lastWeather = 1;
       }
     } else {
+      storedWeathers = [];
       lastWeather = 1;
       i = i + EIGHT_HOURS;
     }

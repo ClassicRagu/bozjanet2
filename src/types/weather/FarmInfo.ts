@@ -1,4 +1,4 @@
 export type FarmInfo = {
-  weather: string,
+  weathers: string[],
   time: number
 };
