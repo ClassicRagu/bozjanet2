@@ -6,7 +6,7 @@ import WeatherTable from "@/components/supermoist/WeatherTable";
 import { getWindows } from "@/functions/weather/getWindows";
 import { FarmInfo } from "@/types/weather/FarmInfo";
 import { WindowTimes } from "@/types/weather/WindowTimes";
-import { Box, Card, Modal } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import React from "react";
 
 function Weather() {
@@ -19,7 +19,6 @@ function Weather() {
     weather: "Snow",
     time: 1,
   });
-  const [scalpowderModelState, setScalpowderModelState] = React.useState(false);
 
   React.useEffect(() => {
     setSnowState(
@@ -77,26 +76,6 @@ function Weather() {
               // This will be implemented later
               false ? <EurekaFarmGuide /> : null
             }
-            <Modal
-              open={scalpowderModelState}
-              onClose={() => setScalpowderModelState(false)}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box
-                component="img"
-                sx={{
-                  position: "absolute" as "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: 900,
-                }}
-                src="/relic/step1/ScalepowderLocation.PNG"
-              />
-            </Modal>
             <FarmSliders
               setWeekState={setWeekState}
               weekState={weekState}
