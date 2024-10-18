@@ -1,8 +1,6 @@
-import { SnowTimes } from "@/types/weather/SnowTimes";
-import { getChance } from "./getChance";
+import { WindowTimes } from "@/types/weather/WindowTimes";
 import { getStartTime } from "./getStartTime";
 import { getWeather } from "./getWeather";
-import { getIncrement } from "./getIncrement";
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
@@ -12,49 +10,49 @@ const translateStartTime = (startingIncrement: number) => {
 }
 
 // validates that the current window takes place at night if needed
-const checkForNightOnly = (time: number, snows:number, increment: number) => {
-  return time != 1 || snows > 2 || increment == 0
+const checkForNightOnly = (time: number, windows:number, increment: number) => {
+  return time != 1 || windows > 2 || increment == 0
 }
 
-export const findSuperMoistWindows = (
+export const getWindows = (
   startTime: Date,
   weeks: number,
-  snows: number,
+  windows: number,
   zone: string,
   weather: string,
   time: number,
   
-): SnowTimes[] => {
-  let timeArr: SnowTimes[] = [];
+): WindowTimes[] => {
+  let timeArr: WindowTimes[] = [];
   let lastSnow = 0;
   const realStartTime = getStartTime(startTime).getTime();
   const endTime = getStartTime(
     new Date(startTime.getTime() + weeks * 6.048e8)
   ).getTime();
   let storedStart = new Date();
+  let storedIncrement = -1;
   let i = realStartTime
   while (
     i < endTime
   ) {
-    const increment = getIncrement(new Date(i));
-    const currentWeather = getWeather(getChance(new Date(i)), zone)
+    const {currentWeather, increment} = getWeather(new Date(i), zone)
     const snowWeather = currentWeather == weather
-    if(snows == 1){
+    if(windows == 1){
       if(snowWeather && (time != 1 || increment < 16)) {
         timeArr = [
           ...timeArr,
-          { startTime: new Date(i), totalSnows: 1, startTimeET: translateStartTime(increment) , endTime: new Date(i) },
+          { startTime: new Date(i), totalWindows: 1, startTimeET: translateStartTime(increment) , endTime: new Date(i) },
         ]
       }
     } else {
-      if(snowWeather && lastSnow == 0 && checkForNightOnly(time, snows, increment)){
+      if(snowWeather && lastSnow == 0 && checkForNightOnly(time, windows, increment)){
         storedStart = new Date(i)
+        storedIncrement = increment
         lastSnow = 1;
-      } else if (snowWeather && lastSnow == (snows - 1)){
-        const startingIncrement = getIncrement(storedStart)
+      } else if (snowWeather && lastSnow == (windows - 1)){
         i = i + EIGHT_HOURS
         while(true){
-          if(getWeather(getChance(new Date(i)), zone) == weather){
+          if(getWeather(new Date(i), zone).currentWeather == weather){
             i = i + EIGHT_HOURS
             lastSnow++
           } else {
@@ -64,11 +62,11 @@ export const findSuperMoistWindows = (
 
         timeArr = [
           ...timeArr,
-          { startTime: storedStart, totalSnows: lastSnow + 1, startTimeET: translateStartTime(startingIncrement), endTime: new Date(i) },
+          { startTime: storedStart, totalWindows: lastSnow + 1, startTimeET: translateStartTime(storedIncrement), endTime: new Date(i) },
         ];
         lastSnow = 0
         continue;
-      } else if (snowWeather && checkForNightOnly(time, snows, increment)) {
+      } else if (snowWeather && checkForNightOnly(time, windows, increment)) {
         lastSnow += 1;
       } else {
         lastSnow = 0;

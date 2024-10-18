@@ -1,6 +1,6 @@
-export type SnowTimes = {
+export type WindowTimes = {
   startTime: Date;
   startTimeET: string,
-  totalSnows: number;
+  totalWindows: number;
   endTime: Date;
 };

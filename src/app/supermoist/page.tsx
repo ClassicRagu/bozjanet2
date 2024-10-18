@@ -1,5 +1,5 @@
 "use client";
-import { findSuperMoistWindows } from "@/functions/weather/findSuperMoistWindows";
+import { getWindows } from "@/functions/weather/getWindows";
 import { listAreas } from "@/static/weather/Areas";
 import { listEurekaFarms } from "@/static/weather/Farms";
 import { FarmInfo } from "@/types/weather/FarmInfo";
@@ -76,7 +76,7 @@ function Weather() {
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
   const [snowState, setSnowState] = React.useState(() => {
-    return findSuperMoistWindows(
+    return getWindows(
       new Date(),
       weekState,
       findSnowState,
@@ -95,7 +95,7 @@ function Weather() {
 
   React.useEffect(() => {
     setSnowState(
-      findSuperMoistWindows(
+      getWindows(
         new Date(),
         weekState,
         findSnowState,
@@ -366,7 +366,7 @@ function Weather() {
                             {x.startTime.toLocaleString()}
                           </TableCell>
                           <TableCell>{x.startTimeET}</TableCell>
-                          {findSnowState > 1 ?<TableCell>{x.totalSnows}</TableCell> : null}
+                          {findSnowState > 1 ?<TableCell>{x.totalWindows}</TableCell> : null}
                           <TableCell>
                             {`<t:${x.startTime.getTime() / 1000}:F>`}
                           </TableCell>
