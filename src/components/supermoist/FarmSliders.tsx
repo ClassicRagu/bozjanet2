@@ -19,7 +19,7 @@ function FarmSliders(props: FarmSlidersProps) {
       style={{
         minHeight: "75px",
         maxWidth: "1000px",
-        marginBottom: "10px",
+        marginBottom: "30px",
         alignItems: "top",
         justifyContent: "center",
         width: "100%",
@@ -32,6 +32,7 @@ function FarmSliders(props: FarmSlidersProps) {
           justifyContent: "center",
           maxHeight: "50px",
           minWidth: "250px",
+          marginBottom: "20px"
         }}
       >
         <Typography gutterBottom>Weeks</Typography>
