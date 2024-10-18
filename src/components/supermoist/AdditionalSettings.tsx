@@ -56,7 +56,7 @@ function AdditionalSettings(props: AdditionalSettingsProps) {
             ...GridInternal,
           }}
         >
-          <FormGroup style={{ alignItems: "center", verticalAlign: "middle" }}>
+          <FormGroup style={{ alignItems: "center", verticalAlign: "middle", marginLeft: "25px" }}>
             <FormControlLabel
               control={
                 <Switch
@@ -76,7 +76,7 @@ function AdditionalSettings(props: AdditionalSettingsProps) {
           <TextField
             label="Subtract from Timestamp"
             id="outlined-start-adornment"
-            sx={{ maxWidth: "100%" }}
+            sx={{ width: "79%" }}
             value={discordTimestampAdjust}
             onChange={handleDiscordAdjust}
             slotProps={{
