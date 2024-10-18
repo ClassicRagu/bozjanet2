@@ -2,11 +2,12 @@
 import EurekaFarmGuide from "@/components/supermoist/EurekaFarmGuide";
 import FarmSelector from "@/components/supermoist/FarmSelector";
 import FarmSliders from "@/components/supermoist/FarmSliders";
+import LongerWindowsToggle from "@/components/supermoist/LongerWindowsToggle";
 import WeatherTable from "@/components/supermoist/WeatherTable";
 import { getWindows } from "@/functions/weather/getWindows";
 import { FarmInfo } from "@/types/weather/FarmInfo";
 import { WindowTimes } from "@/types/weather/WindowTimes";
-import { Box, Card, FormControlLabel, FormGroup, Switch } from "@mui/material";
+import { Box, Card } from "@mui/material";
 import React from "react";
 
 function Weather() {
@@ -61,8 +62,7 @@ function Weather() {
       >
         <h2 style={{ marginTop: "15px" }}>Box/Logos Windows</h2>
         <p>
-          Please note this page exists solely for testing purposes and is not
-          designed to look nice.
+          Please note that this page is still under development and will undergo drastic changes often.
         </p>
         <FarmSelector
           setZoneValue={setZoneValue}
@@ -83,17 +83,10 @@ function Weather() {
               setFindSnowState={setFindSnowState}
               findSnowState={findSnowState}
             />
-            <FormGroup style={{ display: "flex", alignItems: "center" }}>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={longerWindowState}
-                    onChange={(e) => setLongerWindowState(e.target.checked)}
-                  />
-                }
-                label="Show longer windows"
-              />
-            </FormGroup>
+            <LongerWindowsToggle
+              setLongerWindowState={setLongerWindowState}
+              longerWindowState={longerWindowState}
+            />
             <div
               style={{
                 justifyContent: "center",
@@ -105,7 +98,11 @@ function Weather() {
               {
                 // Ensure we have a snowState
                 snowState != null ? (
-                  <WeatherTable snowState={snowState} longerWindowState={longerWindowState} findSnowState={findSnowState} />
+                  <WeatherTable
+                    snowState={snowState}
+                    longerWindowState={longerWindowState}
+                    findSnowState={findSnowState}
+                  />
                 ) : null
               }
             </div>
