@@ -1,78 +1,17 @@
 "use client";
+import EurekaFarmGuide from "@/components/supermoist/EurekaFarmGuide";
+import FarmSelector from "@/components/supermoist/FarmSelector";
+import WeatherTable from "@/components/supermoist/WeatherTable";
 import { getWindows } from "@/functions/weather/getWindows";
-import { listAreas } from "@/static/weather/Areas";
-import { listEurekaFarms } from "@/static/weather/Farms";
+import { marks, snow } from "@/static/weather/SliderMarks";
 import { FarmInfo } from "@/types/weather/FarmInfo";
 import { WindowTimes } from "@/types/weather/WindowTimes";
-import { ExpandMore } from "@mui/icons-material";
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Avatar,
   Box,
-  Card,
-  FormControl,
-  Grid2,
-  InputLabel,
-  MenuItem,
-  Modal,
-  Paper,
-  Select,
-  Slider,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
+  Card, Grid2, Modal, Slider,
+  Typography
 } from "@mui/material";
 import React from "react";
-
-//const ONE_DAY = EIGHT_HOURS * 3;
-
-const marks = [
-  {
-    value: 1,
-    label: "1w",
-  },
-  {
-    value: 2,
-    label: "2w",
-  },
-  {
-    value: 4,
-    label: "4w",
-  },
-  {
-    value: 8,
-    label: "8w",
-  },
-];
-
-const snow = [
-  {
-    value: 1,
-    label: "1",
-  },
-  {
-    value: 2,
-    label: "2",
-  },
-  {
-    value: 3,
-    label: "3",
-  },
-  {
-    value: 4,
-    label: "4",
-  },
-  {
-    value: 5,
-    label: "5",
-  },
-];
 
 function Weather() {
   const [weekState, setWeekState] = React.useState(1);
@@ -100,9 +39,7 @@ function Weather() {
   }, [weekState, findSnowState, zoneValue, farmInfo]);
 
   React.useEffect(() => {
-    setSnowState(
-      getWindows(new Date(), 1, 2, "Hydatos", "Snow", 1)
-    );
+    setSnowState(getWindows(new Date(), 1, 2, "Hydatos", "Snow", 1));
   }, []);
 
   return (
@@ -131,131 +68,18 @@ function Weather() {
           Please note this page exists solely for testing purposes and is not
           designed to look nice.
         </p>
-        <div style={{ display: "inline" }}>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="demo-simple-select-label">Zone</InputLabel>
-            <Select
-              onChange={(event) => {
-                if (event.target.value !== undefined) {
-                  setZoneValue(event.target.value);
-                  setFarmValue("");
-                } else {
-                  setZoneValue("");
-                  setFarmValue("");
-                }
-              }}
-              value={zoneValue}
-              id="combo-box-demo"
-              label={"Zone"}
-              style={{
-                minWidth: "350px",
-                float: "left",
-              }}
-            >
-              {listAreas.map((x) => {
-                return (
-                  <MenuItem key={x} value={x}>
-                    {x}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-          {zoneValue != "" ? (
-            <FormControl sx={{ m: 1 }}>
-              <InputLabel id="demo-simple-select-label">Farm</InputLabel>
-              <Select
-                onChange={(event) => {
-                  if (event.target.value !== undefined) {
-                    setFarmValue(event.target.value);
-                    setFarmInfo(
-                      listEurekaFarms
-                        .find((x) => x.name == zoneValue)
-                        ?.farms.find((x) => x.name == event.target.value)
-                        ?.info ?? { weather: "", time: -1 }
-                    );
-                  } else {
-                    setFarmValue("");
-                  }
-                }}
-                value={farmValue}
-                id="combo-box-demo"
-                label={"Farm"}
-                style={{
-                  minWidth: "350px",
-                  float: "left",
-                }}
-              >
-                {listEurekaFarms
-                  .find((x) => x.name == zoneValue)
-                  ?.farms.map((x) => {
-                    return (
-                      <MenuItem value={x.name} key={x.name}>
-                        <div style={{ display: "flex" }}>
-                          <Avatar
-                            sx={{ width: 22, height: 22, marginRight: "5px" }}
-                            variant="rounded"
-                            src={x.weatherIcon}
-                          />
-                          <Typography>{x.name}</Typography>
-                        </div>
-                      </MenuItem>
-                    );
-                  })}
-              </Select>
-            </FormControl>
-          ) : null}
-        </div>
+        <FarmSelector
+          setZoneValue={setZoneValue}
+          zoneValue={zoneValue}
+          setFarmValue={setFarmValue}
+          farmValue={farmValue}
+          setFarmInfo={setFarmInfo}
+        />
         {zoneValue != "" && farmValue != "" ? (
           <>
             {
               // This will be implemented later
-              false ? (
-                <div
-                  style={{
-                    justifyContent: "center",
-                    display: "flex",
-                    marginTop: "10px",
-                  }}
-                >
-                  <Accordion style={{ maxWidth: "75%" }}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMore />}
-                      aria-controls="panel1-content"
-                      id="panel1-header"
-                    >
-                      <span style={{ verticalAlign: "middle" }}>
-                        <strong>Guide</strong>
-                      </span>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      Step one requires you to obtain 4{" "}
-                      <a href="https://ffxiv.consolegameswiki.com/wiki/Thavnairian_Scalepowder">
-                        Thavnairian Scalepowder
-                      </a>{" "}
-                      which can be bought for a total of 1000 Allagan Tomestones
-                      of Poetics in Mor Dhona.
-                      <br />
-                      These can be obtained from Auriana in the location shown
-                      below in the &quot;Special Arms&quot; menu.
-                      <br />
-                      <br />
-                      <Box
-                        component="img"
-                        sx={{
-                          width: "50%",
-                          height: "auto",
-                        }}
-                        alt="Scalepower Location"
-                        src="/relic/step1/ScalepowderLocation.PNG"
-                        onClick={() => {
-                          setScalpowderModelState(true);
-                        }}
-                      />
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              ) : null
+              false ? <EurekaFarmGuide /> : null
             }
             <Modal
               open={scalpowderModelState}
@@ -348,38 +172,10 @@ function Weather() {
               {
                 // Ensure we have a snowState
                 snowState != null ? (
-                  <TableContainer component={Paper} style={{ width: "80%" }}>
-                    <Table>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Time</TableCell>
-                          <TableCell>ET</TableCell>
-                          {findSnowState > 1 ? (
-                            <TableCell>Windows</TableCell>
-                          ) : null}
-                          <TableCell>Timestamp</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {snowState.map((x, index) => {
-                          return (
-                            <TableRow key={`supermoist-${index}`}>
-                              <TableCell key={`${index}`}>
-                                {x.startTime.toLocaleString()}
-                              </TableCell>
-                              <TableCell>{x.startTimeET}</TableCell>
-                              {findSnowState > 1 ? (
-                                <TableCell>{x.totalWindows}</TableCell>
-                              ) : null}
-                              <TableCell>
-                                {`<t:${x.startTime.getTime() / 1000}:F>`}
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
+                  <WeatherTable
+                    findSnowState={findSnowState}
+                    snowState={snowState}
+                  />
                 ) : null
               }
             </div>
