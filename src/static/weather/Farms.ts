@@ -81,7 +81,7 @@ export const listEurekaFarms = [
         name: "Conceptual Logos",
         weatherIcon: "/weathericons/Showers.png",
         info: {
-          weathers: ["Snow","Showers"],
+          weathers: ["Thunderstorms","Showers"],
           time: -1,
         },
       },
