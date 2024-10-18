@@ -18,10 +18,11 @@ type WeatherTableProps = {
   snowState: WindowTimes[];
   longerWindowState: boolean;
   findSnowState: number;
+  discordTimestampAdjust: string
 };
 
 function WeatherTable(props: WeatherTableProps) {
-  const { snowState, longerWindowState, findSnowState } = props;
+  const { snowState, longerWindowState, findSnowState, discordTimestampAdjust } = props;
 
   return (
     <TableContainer component={Paper} style={{ width: "80%" }}>
@@ -45,8 +46,9 @@ function WeatherTable(props: WeatherTableProps) {
                       <IconButton
                         aria-label="copy"
                         onClick={() => {
+                          const timestamp = x.startTime.getTime() / 1000 - (parseInt(discordTimestampAdjust) * 60)
                           navigator.clipboard.writeText(
-                            `<t:${x.startTime.getTime() / 1000}:F>`
+                            `<t:${timestamp}:F> <t:${timestamp}:R>`
                           );
                         }}
                       >

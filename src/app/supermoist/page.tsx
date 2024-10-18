@@ -2,7 +2,7 @@
 import EurekaFarmGuide from "@/components/supermoist/EurekaFarmGuide";
 import FarmSelector from "@/components/supermoist/FarmSelector";
 import FarmSliders from "@/components/supermoist/FarmSliders";
-import LongerWindowsToggle from "@/components/supermoist/LongerWindowsToggle";
+import AdditionalSettings from "@/components/supermoist/AdditionalSettings";
 import WeatherTable from "@/components/supermoist/WeatherTable";
 import { getWindows } from "@/functions/weather/getWindows";
 import { FarmInfo } from "@/types/weather/FarmInfo";
@@ -12,6 +12,7 @@ import React from "react";
 
 function Weather() {
   const [longerWindowState, setLongerWindowState] = React.useState(false);
+  const [discordTimestampAdjust, setDiscordTimestampAdjust] = React.useState('0')
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
   const [snowState, setSnowState] = React.useState<WindowTimes[] | null>(null);
@@ -83,9 +84,11 @@ function Weather() {
               setFindSnowState={setFindSnowState}
               findSnowState={findSnowState}
             />
-            <LongerWindowsToggle
+            <AdditionalSettings
               setLongerWindowState={setLongerWindowState}
               longerWindowState={longerWindowState}
+              discordTimestampAdjust={discordTimestampAdjust}
+              setDiscordTimestampAdjust={setDiscordTimestampAdjust}
             />
             <div
               style={{
@@ -102,6 +105,7 @@ function Weather() {
                     snowState={snowState}
                     longerWindowState={longerWindowState}
                     findSnowState={findSnowState}
+                    discordTimestampAdjust={discordTimestampAdjust}
                   />
                 ) : null
               }

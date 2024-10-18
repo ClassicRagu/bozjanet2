@@ -1,5 +1,6 @@
 "use client";
 import { marks, snow } from "@/static/weather/SliderMarks";
+import { GridInternal, GridMain } from "@/styles/shared/GridStyles";
 import { Grid2, Slider, Typography } from "@mui/material";
 
 type FarmSlidersProps = {
@@ -17,21 +18,13 @@ function FarmSliders(props: FarmSlidersProps) {
       container
       spacing={2}
       style={{
-        minHeight: "75px",
-        maxWidth: "1000px",
-        marginBottom: "30px",
-        alignItems: "top",
-        justifyContent: "center",
-        width: "100%",
-        marginTop: "10px",
+        ...GridMain,
+        marginBottom: "30px"
       }}
     >
       <Grid2
         style={{
-          alignContent: "center",
-          justifyContent: "center",
-          maxHeight: "50px",
-          minWidth: "250px",
+          ...GridInternal,
           marginBottom: "20px"
         }}
       >
@@ -52,10 +45,7 @@ function FarmSliders(props: FarmSlidersProps) {
       </Grid2>
       <Grid2
         style={{
-          alignContent: "center",
-          justifyContent: "center",
-          maxHeight: "50px",
-          minWidth: "250px",
+          ...GridInternal
         }}
       >
         <Typography gutterBottom>Windows</Typography>
