@@ -94,7 +94,6 @@ function Weather() {
                 // Ensure we have a snowState
                 snowState != null ? (
                   <WeatherTable
-                    findSnowState={findSnowState}
                     snowState={snowState}
                   />
                 ) : null

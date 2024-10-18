@@ -10,12 +10,11 @@ import {
 } from "@mui/material";
 
 type WeatherTableProps = {
-  findSnowState: number;
   snowState: WindowTimes[];
 };
 
 function WeatherTable(props: WeatherTableProps) {
-  const { findSnowState, snowState } = props;
+  const { snowState } = props;
 
   return (
     <TableContainer component={Paper} style={{ width: "80%" }}>
