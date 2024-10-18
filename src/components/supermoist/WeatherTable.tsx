@@ -24,7 +24,7 @@ function WeatherTable(props: WeatherTableProps) {
           <TableRow>
             <TableCell>Time</TableCell>
             <TableCell>ET</TableCell>
-            {findSnowState > 1 ? <TableCell>Windows</TableCell> : null}
+            {findSnowState > 2 ? <TableCell>Windows</TableCell> : null}
             <TableCell>Timestamp</TableCell>
           </TableRow>
         </TableHead>
@@ -36,7 +36,7 @@ function WeatherTable(props: WeatherTableProps) {
                   {x.startTime.toLocaleString()}
                 </TableCell>
                 <TableCell>{x.startTimeET}</TableCell>
-                {findSnowState > 1 ? (
+                {findSnowState > 2 ? (
                   <TableCell>{x.totalWindows}</TableCell>
                 ) : null}
                 <TableCell>{`<t:${x.startTime.getTime() / 1000}:F>`}</TableCell>
