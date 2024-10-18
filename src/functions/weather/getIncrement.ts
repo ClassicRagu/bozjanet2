@@ -1,4 +1,6 @@
 // This code was ripped directly from eorzea-weather
+// This is duplicated code but I'd rather not calculate the bell and unix
+// time in any other file
 export const getIncrement = (date: Date): number => {
   const unixtime = Math.floor(date.getTime() / 1000);
   // Get Eorzea hour for weather start

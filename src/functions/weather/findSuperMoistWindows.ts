@@ -6,8 +6,14 @@ import { getIncrement } from "./getIncrement";
 
 const EIGHT_HOURS = 8 * 175 * 1000;
 
+// Translates increment to ET start time
 const translateStartTime = (startingIncrement: number) => {
   return startingIncrement == 0 ? "4pm" : startingIncrement == 8 ? "12am" : "8am"
+}
+
+// validates that the current window takes place at night if needed
+const checkForNightOnly = (time: number, snows:number, increment: number) => {
+  return time != 1 || snows > 2 || increment == 0
 }
 
 export const findSuperMoistWindows = (
@@ -28,43 +34,42 @@ export const findSuperMoistWindows = (
   let storedStart = new Date();
   for (
     let i = realStartTime;
-    i < endTime; //realStartTime + ONE_DAY * 1000;
+    i < endTime;
     i = i + EIGHT_HOURS
   ) {
     const increment = getIncrement(new Date(i));
+    const currentWeather = getWeather(getChance(new Date(i)), zone)
     if(snows == 1){
       if(getWeather(getChance(new Date(i)), zone) == weather && (time != 1 || increment < 16)) {
-        const startingIncrement = getIncrement(new Date(i))
         timeArr = [
           ...timeArr,
-          { startTime: new Date(i), startTimeET: translateStartTime(startingIncrement) , endTime: new Date(i) },
+          { startTime: new Date(i), totalSnows: 1, startTimeET: translateStartTime(increment) , endTime: new Date(i) },
         ]
       }
-    } else if (time == 1 && snows == 2) {
-      if (increment < 16 && getWeather(getChance(new Date(i)), zone) == weather) {
-        if (lastSnow > 0 && increment == 8) {
-          timeArr = [
-            ...timeArr,
-            { startTime: new Date(i - EIGHT_HOURS), startTimeET: "4pm" , endTime: new Date(i) },
-          ];
-        }
-        lastSnow = 1;
-      } else {
-        lastSnow = 0;
-      }
     } else {
-      const snowWeather = getWeather(getChance(new Date(i)), zone) == weather
-      if(snowWeather && lastSnow == 0){
+      const snowWeather = currentWeather == weather
+      if(snowWeather && lastSnow == 0 && checkForNightOnly(time, snows, increment)){
         storedStart = new Date(i)
         lastSnow = 1;
       } else if (snowWeather && lastSnow == (snows - 1)){
         const startingIncrement = getIncrement(storedStart)
+        let loopCount = 1
+        // Next commit will rewrite this entire for loop to be a while loop instead so this loop will change
+        while(loopCount > 0){
+          if(getWeather(getChance(new Date(i + (EIGHT_HOURS * loopCount))), zone) == weather){
+            lastSnow++
+            loopCount++
+          } else {
+            loopCount = -1;
+          }
+        }
+
         timeArr = [
           ...timeArr,
-          { startTime: storedStart, startTimeET: translateStartTime(startingIncrement) ,endTime: new Date(i) },
+          { startTime: storedStart, totalSnows: lastSnow + 1, startTimeET: translateStartTime(startingIncrement), endTime: new Date(i) },
         ];
         lastSnow = 0
-      } else if (snowWeather) {
+      } else if (snowWeather && checkForNightOnly(time, snows, increment)) {
         lastSnow += 1;
       } else {
         lastSnow = 0;

@@ -2,6 +2,7 @@ import { hydatosWeather } from "@/static/weather/Weather/HydatosXIVAPI";
 import { pagosWeather } from "@/static/weather/Weather/PagosXIVAPI";
 import { pyrosWeather } from "@/static/weather/Weather/PyrosXIVAPI";
 
+//Get the WeatherRate sheet for each zone
 const getZone = (zone: string) => {
   switch(zone) {
     case "Hydatos":
@@ -15,6 +16,7 @@ const getZone = (zone: string) => {
   }
 }
 
+// Construct an array with the weather name and the rate
 const constructRates = (zone: string) => {
   const zoneFields = getZone(zone)
   const rateMap = zoneFields.fields.Rate.map((x, index) =>{
@@ -23,10 +25,11 @@ const constructRates = (zone: string) => {
   return rateMap
 }
 
-export const getWeather = (hash: number, zone: string) => {
-  //const rates = weatherRates[partition.weatherRates[place][weatherRateIndex]].rates\
-  
+export const getWeather = (hash: number, zone: string) => {  
   const rates = constructRates(zone)
+
+  // This code was ripped directly from eorzea-weather
+  // Determines the weather based on the rate for each weather
   let cumChance = 0;
   for (const [weather, chance] of rates) {
     if ((cumChance += <number>chance) > hash) {

@@ -1,3 +1,4 @@
+// This code was ripped directly from eorzea-weather
 export const getStartTime = (date: Date): Date => {
   const oneHour = 175 * 1000;
   const msec = date.getTime();

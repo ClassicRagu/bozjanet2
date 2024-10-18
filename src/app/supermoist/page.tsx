@@ -352,6 +352,9 @@ function Weather() {
                     <TableRow>
                       <TableCell>Time</TableCell>
                       <TableCell>ET</TableCell>
+                      {findSnowState > 1 ?
+                      <TableCell>Windows</TableCell>
+                    : null}
                       <TableCell>Timestamp</TableCell>
                     </TableRow>
                   </TableHead>
@@ -363,6 +366,7 @@ function Weather() {
                             {x.startTime.toLocaleString()}
                           </TableCell>
                           <TableCell>{x.startTimeET}</TableCell>
+                          {findSnowState > 1 ?<TableCell>{x.totalSnows}</TableCell> : null}
                           <TableCell>
                             {`<t:${x.startTime.getTime() / 1000}:F>`}
                           </TableCell>
