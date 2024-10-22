@@ -1,6 +1,5 @@
 import { Box, Card } from "@mui/material";
 
-
 export default function SuperMoistLayout({
   children,
 }: Readonly<{

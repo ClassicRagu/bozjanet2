@@ -8,20 +8,27 @@ import { getWindows } from "@/functions/weather/getWindows";
 import { FarmInfo } from "@/types/weather/FarmInfo";
 import { WindowTimes } from "@/types/weather/WindowTimes";
 import React from "react";
+import { listEurekaFarms } from "@/static/weather/Farms";
 
-function Weather() {
+function Weather({ params }: { params: { zone: string; farm: string } }) {
   const [longerWindowState, setLongerWindowState] = React.useState(true);
   const [discordTimestampAdjust, setDiscordTimestampAdjust] =
     React.useState("0");
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
   const [snowState, setSnowState] = React.useState<WindowTimes[] | null>(null);
-  const [zoneValue, setZoneValue] = React.useState("Hydatos");
-  const [farmValue, setFarmValue] = React.useState("Super Moist");
-  const [farmInfo, setFarmInfo] = React.useState<FarmInfo>({
-    weathers: ["Snow"],
-    time: 1,
-  });
+  const [zoneValue, setZoneValue] = React.useState(params.zone);
+  const [farmValue, setFarmValue] = React.useState(
+    params.farm.replaceAll("%20", " ")
+  );
+  const [farmInfo, setFarmInfo] = React.useState<FarmInfo>(
+    listEurekaFarms
+      .find((x) => x.name == params.zone)
+      ?.farms.find((x) => x.name == params.farm.replaceAll("%20", " "))?.info ?? {
+      weathers: [""],
+      time: -1,
+    }
+  );
 
   React.useEffect(() => {
     setSnowState(
@@ -37,8 +44,25 @@ function Weather() {
   }, [weekState, findSnowState, zoneValue, farmInfo]);
 
   React.useEffect(() => {
-    setSnowState(getWindows(new Date(), 1, 2, "Hydatos", ["Snow"], 1));
-  }, []);
+    const farm = params.farm.replaceAll("%20", " ");
+    const farmVals = listEurekaFarms
+      .find((x) => x.name == params.zone)
+      ?.farms.find((x) => x.name == farm)?.info ?? {
+      weathers: [""],
+      time: -1,
+    };
+
+    setSnowState(
+      getWindows(
+        new Date(),
+        1,
+        2,
+        params.zone,
+        farmVals.weathers,
+        farmVals.time
+      )
+    );
+  }, [params.farm, params.zone]);
 
   return (
     <>

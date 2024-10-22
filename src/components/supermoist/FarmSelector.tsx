@@ -3,13 +3,13 @@ import { listAreas } from "@/static/weather/Areas";
 import { listEurekaFarms } from "@/static/weather/Farms";
 import { FarmInfo } from "@/types/weather/FarmInfo";
 import {
-  Avatar,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
-  Typography,
+  Typography
 } from "@mui/material";
+import Image from "next/image";
 
 type FarmSelectorProps = {
   setZoneValue: React.Dispatch<React.SetStateAction<string>>;
@@ -69,8 +69,11 @@ function FarmSelector(props: FarmSelectorProps) {
                     time: -1,
                   }
                 );
-              } else {
-                setFarmValue("");
+                // Using the NextJS router does work for this as well but it causes components to rerender
+                // it might be worth rewriting this in the future so it works properly
+                // router.push(`/EurekaFarm/${zoneValue}/${event.target.value}`)
+                window.history.pushState(null, '', `/EurekaFarm/${zoneValue}/${event.target.value}`);
+                
               }
             }}
             value={farmValue}
@@ -87,9 +90,10 @@ function FarmSelector(props: FarmSelectorProps) {
                 return (
                   <MenuItem value={x.name} key={x.name}>
                     <div style={{ display: "flex" }}>
-                      <Avatar
-                        sx={{ width: 22, height: 22, marginRight: "5px" }}
-                        variant="rounded"
+                      <Image
+                        width={22}
+                        height={22}
+                        alt={`${x.name} weather image`}
                         src={x.weatherIcon}
                       />
                       <Typography>{x.name}</Typography>
