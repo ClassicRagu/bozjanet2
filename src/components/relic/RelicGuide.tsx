@@ -1,3 +1,4 @@
+"use server"
 import * as React from "react";
 import RelicStep1 from "./step1/Step1";
 import RelicStep2 from "./step2/Step2";

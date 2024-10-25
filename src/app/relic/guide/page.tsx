@@ -1,11 +1,13 @@
-import RelicTracker from "@/components/relic/RelicTracker";
+"use server";
+import RelicGuide from "@/components/relic/RelicGuide";
 import RelicToggle from "@/components/relic/RelicToggle";
 
 function Relic() {
+  
   return (
     <>
-      <RelicToggle mode={"tracker"} />
-      <RelicTracker />
+      <RelicToggle mode={"guide"} />
+      <RelicGuide />
     </>
   );
 }

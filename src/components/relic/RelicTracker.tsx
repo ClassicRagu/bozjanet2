@@ -166,8 +166,8 @@ function RelicTracker() {
           <textarea
             readOnly={true}
             style={{ width: "100%", minHeight: "200px", resize: "none" }}
+            value={JSON.stringify(weaponList)}
           >
-            {JSON.stringify(weaponList)}
           </textarea>
           <Button
             size="small"
