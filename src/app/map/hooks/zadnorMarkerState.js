@@ -12,10 +12,11 @@ export const zadnorMarkerState = atom((get) => {
     const tmp = [];
     if (fragments[fragment].Zadnor)
       fragments[fragment].Zadnor.forEach((locations) => {
-        locations.forEach((monster) => {
+        locations.forEach((monster, index) => {
           if (monster.Level === "Star") {
             tmp.push(
               <Marker
+                key={`${monster.Monster}-${index}`}
                 position={monster.Location}
                 icon={
                   new Icon({
@@ -33,6 +34,7 @@ export const zadnorMarkerState = atom((get) => {
           } else if (monster) {
             tmp.push(
               <Circle
+                key={`${monster.Monster}-${index}`}
                 center={monster.Location}
                 pathOptions={{
                   fillColor: setColor(monster.Level),

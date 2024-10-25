@@ -11,11 +11,12 @@ export const bsfMarkerState = atom((get) => {
   if (fragment !== "") {
     const tmp = [];
     if (fragments[fragment].BSF)
-      fragments[fragment].BSF.forEach((locations) => {
+      fragments[fragment].BSF.forEach((locations, index) => {
         locations.forEach((monster) => {
           if (monster.Level === "Star") {
             tmp.push(
               <Marker
+                key={`${monster.Monster}-${index}`}
                 position={monster.Location}
                 icon={
                   new Icon({
@@ -33,6 +34,7 @@ export const bsfMarkerState = atom((get) => {
           } else if (monster) {
             tmp.push(
               <Circle
+                key={`${monster.Monster}-${index}`}
                 center={monster.Location}
                 pathOptions={{
                   fillColor: setColor(monster.Level),

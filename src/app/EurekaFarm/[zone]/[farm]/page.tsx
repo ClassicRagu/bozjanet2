@@ -10,21 +10,22 @@ import { WindowTimes } from "@/types/weather/WindowTimes";
 import React from "react";
 import { listEurekaFarms } from "@/static/weather/Farms";
 
-function Weather({ params }: { params: { zone: string; farm: string } }) {
+function Weather({ params }: { params: Promise<{ zone: string; farm: string }> }) {
+  const {zone, farm} = React.use(params)
   const [longerWindowState, setLongerWindowState] = React.useState(true);
   const [discordTimestampAdjust, setDiscordTimestampAdjust] =
     React.useState("0");
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
   const [snowState, setSnowState] = React.useState<WindowTimes[] | null>(null);
-  const [zoneValue, setZoneValue] = React.useState(params.zone);
+  const [zoneValue, setZoneValue] = React.useState(zone);
   const [farmValue, setFarmValue] = React.useState(
-    params.farm.replaceAll("%20", " ")
+    farm.replaceAll("%20", " ")
   );
   const [farmInfo, setFarmInfo] = React.useState<FarmInfo>(
     listEurekaFarms
-      .find((x) => x.name == params.zone)
-      ?.farms.find((x) => x.name == params.farm.replaceAll("%20", " "))?.info ?? {
+      .find((x) => x.name == zone)
+      ?.farms.find((x) => x.name == farm.replaceAll("%20", " "))?.info ?? {
       weathers: [""],
       time: -1,
     }
@@ -44,10 +45,10 @@ function Weather({ params }: { params: { zone: string; farm: string } }) {
   }, [weekState, findSnowState, zoneValue, farmInfo]);
 
   React.useEffect(() => {
-    const farm = params.farm.replaceAll("%20", " ");
+    const farmName = farm.replaceAll("%20", " ");
     const farmVals = listEurekaFarms
-      .find((x) => x.name == params.zone)
-      ?.farms.find((x) => x.name == farm)?.info ?? {
+      .find((x) => x.name == zone)
+      ?.farms.find((x) => x.name == farmName)?.info ?? {
       weathers: [""],
       time: -1,
     };
@@ -57,12 +58,12 @@ function Weather({ params }: { params: { zone: string; farm: string } }) {
         new Date(),
         1,
         2,
-        params.zone,
+        zone,
         farmVals.weathers,
         farmVals.time
       )
     );
-  }, [params.farm, params.zone]);
+  }, [farm, zone]);
 
   return (
     <>
