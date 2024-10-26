@@ -34,9 +34,8 @@ function RelicStep3() {
             <Box
               component="img"
               sx={{
-                maxWidth: "30px",
-                height: "auto",
-                width: "auto",
+                width: "30px",
+                height: "30px",
                 verticalAlign: "middle",
                 marginRight: "5px",
               }}

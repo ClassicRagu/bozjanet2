@@ -28,6 +28,8 @@ function IconBox(iconBoxProps: IconBoxProps) {
         filter: !isGreyscale[iconBoxProps.step][iconBoxProps.job]
           ? "saturate(0%)"
           : "saturate(100%)",
+        width: "50px",
+        height: "50px"
       }}
       onClick={() => {
         const updatedArray = [...isGreyscale];

@@ -13,9 +13,8 @@ import { useAtom } from "jotai";
 import { weaponState } from "../RelicTracker";
 
 const imageStyle = {
-  maxWidth: "30px",
-  height: "auto",
-  width: "auto",
+  width: "30px",
+  height: "30px",
   verticalAlign: "middle",
   marginRight: "5px",
 };
@@ -51,13 +50,7 @@ function RelicRemainingItems() {
                     <div>
                       <Box
                         component="img"
-                        sx={{
-                          maxWidth: "30px",
-                          height: "auto",
-                          width: "auto",
-                          verticalAlign: "middle",
-                          marginRight: "5px",
-                        }}
+                        sx={imageStyle}
                         alt="Scalepower"
                         src="/relic/step1/Scalepowder.png"
                       />

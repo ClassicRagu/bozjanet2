@@ -5,7 +5,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box
+  Box,
 } from "@mui/material";
 import { useAtom } from "jotai";
 
@@ -33,9 +33,8 @@ function RelicStep4() {
             <Box
               component="img"
               sx={{
-                maxWidth: "30px",
-                height: "auto",
-                width: "auto",
+                width: "30px",
+                height: "30px",
                 verticalAlign: "middle",
                 marginRight: "5px",
               }}
