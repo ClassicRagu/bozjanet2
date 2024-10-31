@@ -1,7 +1,6 @@
 import { WeatherRates } from "@/static/weather/Weather/WeatherRates";
 import { Zones } from "@/static/weather/Weather/Zones";
 import { ChanceMap } from "@/types/weather/ChanceMap";
-import { RateMap } from "@/types/weather/RateMap";
 import { WeatherMap } from "@/types/weather/WeatherMap";
 
 //Get the WeatherRate sheet for each zone
