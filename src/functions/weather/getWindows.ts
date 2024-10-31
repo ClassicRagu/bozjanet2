@@ -1,17 +1,8 @@
 import { WindowTimes } from "@/types/weather/WindowTimes";
-import { getStartTime } from "./getStartTime";
-import { getWeather } from "./getWeather";
+import { getETWindow, getTimefromIncrement, getWeather } from "xivweather";
+import { getZone } from "./getZone";
 
 const EIGHT_HOURS = 8 * 175 * 1000;
-
-// Translates increment to ET start time
-const translateStartTime = (startingIncrement: number) => {
-  return startingIncrement == 0
-    ? "4pm"
-    : startingIncrement == 8
-    ? "12am"
-    : "8am";
-};
 
 // validates that the current window takes place at night if needed
 const checkForNightOnly = (
@@ -37,8 +28,8 @@ export const getWindows = (
 ): WindowTimes[] => {
   let timeArr: WindowTimes[] = [];
   let lastWeather = 1;
-  const realStartTime = getStartTime(startTime).getTime();
-  const endTime = getStartTime(
+  const realStartTime = getETWindow(startTime).getTime();
+  const endTime = getETWindow(
     new Date(startTime.getTime() + weeks * 6.048e8)
   ).getTime();
   let storedStart = new Date();
@@ -46,7 +37,7 @@ export const getWindows = (
   let storedWeathers = []
   let i = realStartTime;
   while (i < endTime) {
-    const { currentWeather, increment } = getWeather(new Date(i), zone);
+    const { currentWeather, increment } = getWeather(new Date(i), getZone(zone));
     const validWeather = weathers.includes(currentWeather);
     if (validWeather) {
       storedWeathers.push(currentWeather)
@@ -54,7 +45,7 @@ export const getWindows = (
       storedIncrement = increment;
       i = i + EIGHT_HOURS;
       while (true) {
-        const newWeather = getWeather(new Date(i), zone).currentWeather
+        const newWeather = getWeather(new Date(i), getZone(zone)).currentWeather
         if (weathers.includes(newWeather)) {
           storedWeathers.push(newWeather)
           i = i + EIGHT_HOURS;
@@ -69,7 +60,7 @@ export const getWindows = (
           {
             startTime: storedStart,
             totalWindows: lastWeather,
-            startTimeET: translateStartTime(storedIncrement),
+            startTimeET: getTimefromIncrement(storedIncrement),
             endTime: new Date(i),
             weathers: storedWeathers
           },
@@ -84,7 +75,7 @@ export const getWindows = (
           {
             startTime: storedStart,
             totalWindows: lastWeather,
-            startTimeET: translateStartTime(storedIncrement),
+            startTimeET: getTimefromIncrement(storedIncrement),
             endTime: new Date(i),
             weathers: storedWeathers
           },
