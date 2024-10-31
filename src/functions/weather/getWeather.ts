@@ -1,6 +1,5 @@
-import { hydatosWeather } from "@/static/weather/Weather/HydatosXIVAPI";
-import { pagosWeather } from "@/static/weather/Weather/PagosXIVAPI";
-import { pyrosWeather } from "@/static/weather/Weather/PyrosXIVAPI";
+import { WeatherRates } from "@/static/weather/Weather/WeatherRates";
+import { Zones } from "@/static/weather/Weather/Zones";
 import { ChanceMap } from "@/types/weather/ChanceMap";
 import { RateMap } from "@/types/weather/RateMap";
 import { WeatherMap } from "@/types/weather/WeatherMap";
@@ -9,27 +8,18 @@ import { WeatherMap } from "@/types/weather/WeatherMap";
 const getZone = (zone: string) => {
   switch(zone) {
     case "Hydatos":
-      return hydatosWeather
+      return "Eureka Hydatos"
     case "Pagos":
-      return pagosWeather
+      return "Eureka Pagos"
     case "Pyros":
-      return pyrosWeather
+      return "Eureka Pyros"
     default:
-      return hydatosWeather
+      return "Eureka Hydatos"
   }
 }
 
-// Construct an array with the weather name and the rate
-const constructRates = (zone: string): RateMap[] => {
-  const zoneFields = getZone(zone)
-  const rateMap = zoneFields.fields.Rate.map((x, index) =>{
-    return {weather: zoneFields.fields.Weather[index].fields.Name, rate: x}
-  })
-  return rateMap
-}
-
 // This code was ripped directly from eorzea-weather
-export const getChance = (date: Date): ChanceMap => {
+const getChance = (date: Date): ChanceMap => {
   const unixtime = Math.floor(date.getTime() / 1000);
   // Get Eorzea hour for weather start
   const bell = unixtime / 175;
@@ -53,14 +43,14 @@ export const getChance = (date: Date): ChanceMap => {
 
 export const getWeather = (date: Date, zone: string): WeatherMap => {  
   const {chance:hash, increment} = getChance(date)
-  const rates = constructRates(zone)
+  const rates = WeatherRates[Zones[getZone(zone)]]
 
   // This code was ripped directly from eorzea-weather
   // Determines the weather based on the rate for each weather
   let cumChance = 0;
-  for (const {weather, rate:chance} of rates) {
+  for (const {Weather, Rate:chance} of rates) {
     if ((cumChance += <number>chance) > hash) {
-      return {currentWeather: weather, increment};
+      return {currentWeather: Weather, increment};
     }
   }
 

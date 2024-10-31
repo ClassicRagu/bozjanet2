@@ -1,4 +1,4 @@
 export type RateMap = {
-  weather: string,
-  rate: number
+  Weather: string,
+  Rate: number
 }
