@@ -3,12 +3,12 @@ import { ZONE_EUREKA_HYDATOS, ZONE_EUREKA_PAGOS, ZONE_EUREKA_PYROS } from "xivwe
 export const getZone = (zone: string) => {
   switch(zone) {
     case "Hydatos":
-      return ZONE_EUREKA_HYDATOS.Name
+      return ZONE_EUREKA_HYDATOS
     case "Pagos":
-      return ZONE_EUREKA_PAGOS.Name
+      return ZONE_EUREKA_PAGOS
     case "Pyros":
-      return ZONE_EUREKA_PYROS.Name
+      return ZONE_EUREKA_PYROS
     default:
-      return ZONE_EUREKA_HYDATOS.Name
+      return ZONE_EUREKA_HYDATOS
   }
 }
