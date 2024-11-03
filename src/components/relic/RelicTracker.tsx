@@ -43,12 +43,21 @@ function RelicTracker() {
   const [exportState, setExportState] = useState(false);
   const [importState, setImportState] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [imported, setImported] = useState<boolean | null>(false);
+  const [imported, setImported] = useState<boolean | null | string>(false);
   const [importValue, setImportValue] = useState("");
 
   const validateImport = (importValue: null | string) => {
     if (importValue != null) {
       try {
+        // I'm so sorry
+        if (importValue.toLocaleLowerCase() == "bee" || importValue.toLocaleLowerCase() == "b") {
+          var snd = new Audio("bee.mp3");
+          snd.volume = 0.2;
+          snd.play();
+          setImported("bee");
+          return;
+        }
+        // Real importing stuff
         const parsedVal = JSON.parse(importValue);
         if (parsedVal.length != 6) {
           setImported(null);
@@ -167,11 +176,10 @@ function RelicTracker() {
             readOnly={true}
             style={{ width: "100%", minHeight: "200px", resize: "none" }}
             value={JSON.stringify(weaponList)}
-          >
-          </textarea>
+          ></textarea>
           <Button
             size="small"
-            style={{ minWidth: "250px", marginTop:"10px" }}
+            style={{ minWidth: "250px", marginTop: "10px" }}
             onClick={() => {
               navigator.clipboard.writeText(JSON.stringify(weaponList));
               setCopied(true);
@@ -201,7 +209,7 @@ function RelicTracker() {
           ></textarea>
           <Button
             size="small"
-            style={{ minWidth: "250px", marginTop:"10px" }}
+            style={{ minWidth: "250px", marginTop: "10px" }}
             onClick={() => {
               validateImport(importValue);
             }}
@@ -209,7 +217,8 @@ function RelicTracker() {
           >
             {imported == true
               ? "Imported!"
-              : imported == null
+              : imported == "bee" ? "BEE" :
+              imported == null
               ? "Invalid Import"
               : "Import"}
           </Button>
