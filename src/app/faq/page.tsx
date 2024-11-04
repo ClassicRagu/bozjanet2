@@ -1,5 +1,5 @@
 import BozjaAccordians from "@/components/shared/BozjaAccordians";
-import { Box, Grid2 } from "@mui/material";
+import { Box, Grid2, Link } from "@mui/material";
 import * as React from "react";
 
 const faqs = require("./json/FAQ.json");
@@ -14,13 +14,20 @@ function FAQ() {
   const formattedFAQs: React.JSX.Element[] = [];
 
   faqs.forEach((element: FAQ) => {
-    const formattedLinks: string[] = [];
+    const formattedLinks: React.JSX.Element[] = [];
     element.Info.forEach((info: string, index) => {
+      const splitInfo = info.split("<LINK>");
+      const guideLink = splitInfo.length > 1 ? (
+        <Link href={`${element.Links[index][1]}`}>
+          {element.Links[index][0]}
+        </Link> 
+      ): null;
       formattedLinks.push(
-        info.replace(
-          "<LINK>",
-          `<a href=${element.Links[index][1]}>${element.Links[index][0]}</a>`
-        )
+        <>
+          {splitInfo[0]}
+          {guideLink}
+          {splitInfo.length > 1 ? splitInfo[1] : null}
+        </>
       );
     });
     formattedFAQs.push(

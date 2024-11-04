@@ -1,6 +1,6 @@
 "use client"
 import * as React from "react";
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, Link, TextField } from "@mui/material";
 import { Card } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 
@@ -45,7 +45,7 @@ function FragmentLookup() {
             }}
           >
             <p>
-              Thank you to <a href="https://xivapi.com/">XIVApi</a> for
+              Thank you to <Link href="https://xivapi.com/">XIVApi</Link> for
               providing the map and icons.
             </p>
             <div style={{ display: "inline" }}>
