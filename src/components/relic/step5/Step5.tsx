@@ -5,6 +5,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Link,
   Box
 } from "@mui/material";
 import { useAtom } from "jotai";
@@ -48,9 +49,9 @@ function RelicStep5() {
         </AccordionSummary>
         <AccordionDetails>
           Step five requires you to obtain 15{" "}
-          <a href="https://ffxiv.consolegameswiki.com/wiki/Timeworn_Artifact">
+          <Link href="https://ffxiv.consolegameswiki.com/wiki/Timeworn_Artifact">
             Timeworn Artifacts
-          </a>
+          </Link>
           <p>
             This step only has two ways to complete it and it depends on if you
             just want to finish quickly or go for the &quot;The
@@ -70,9 +71,9 @@ function RelicStep5() {
           <p>
             The speed of this step heavily relies on the actions and essences
             people are using in DRN. If you are with 8 people{" "}
-            <a href="https://i.imgur.com/OmaJ15C.png">use this guide</a> and if
+            <Link href="https://i.imgur.com/OmaJ15C.png">use this guide</Link> and if
             you are with 5 people{" "}
-            <a href="https://i.imgur.com/tjgIByv.png">use this guide.</a>
+            <Link href="https://i.imgur.com/tjgIByv.png">use this guide.</Link>
           </p>
           <p>
             This is however, the perfect step for those who want to get the

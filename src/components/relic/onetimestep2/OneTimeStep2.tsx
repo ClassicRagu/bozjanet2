@@ -5,7 +5,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box
+  Box,
+  Link
 } from "@mui/material";
 import { useAtom } from "jotai";
 
@@ -52,19 +53,19 @@ function OneTimeStep2() {
           items obtained from Skirmishes and CEs:{" "}
           <ul>
             <li>
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Spare_Parts">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Spare_Parts">
                 Spare Parts
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Tell_Me_a_Story">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Tell_Me_a_Story">
                 Tell Me a Story
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="https://ffxiv.consolegameswiki.com/wiki/A_Fond_Memory">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/A_Fond_Memory">
                 A Fond Memory
-              </a>
+              </Link>
             </li>
           </ul>
           Each of these quests requires 30 of 2 items. Each item correlates to
@@ -82,25 +83,25 @@ function OneTimeStep2() {
           <ul>
             <li>
               Spare Parts:{" "}
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Burden_of_the_Father">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Alexander_-_The_Burden_of_the_Father">
                 Alexander The Burden of the Father
-              </a>
+              </Link>
             </li>
             <li>
               Tell Me a Story:{" "}
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Deltascape_V3.0">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Deltascape_V3.0">
                 Deltascape V3.0
-              </a>
+              </Link>
             </li>
             <li>
               A Fond Memory:{" "}
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Eden%27s_Gate:_Inundation">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Eden%27s_Gate:_Inundation">
                 Eden&apos;s Gate: Inundation
-              </a>
+              </Link>
             </li>
           </ul>
           It should be noted, some discord servers, like{" "}
-          <a href="https://discord.gg/agentsofeureka">Agents of Eureka</a> on
+          <Link href="https://discord.gg/agentsofeureka">Agents of Eureka</Link> on
           NA, occasionally host cluster farms in Zadnor. These farms tend to
           spawn almost all of the CEs in the instance so it may be worth trying
           to join the same instance as those farming to complete the CE items.

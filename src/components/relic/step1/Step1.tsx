@@ -6,6 +6,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Link,
   Modal,
 } from "@mui/material";
 import { useAtom } from "jotai";
@@ -51,9 +52,9 @@ function RelicStep1() {
         </AccordionSummary>
         <AccordionDetails>
           Step one requires you to obtain 4{" "}
-          <a href="https://ffxiv.consolegameswiki.com/wiki/Thavnairian_Scalepowder">
+          <Link href="https://ffxiv.consolegameswiki.com/wiki/Thavnairian_Scalepowder">
             Thavnairian Scalepowder
-          </a>{" "}
+          </Link>{" "}
           which can be bought for a total of 1000 Allagan Tomestones of Poetics
           in Mor Dhona.
           <br />

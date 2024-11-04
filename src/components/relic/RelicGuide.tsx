@@ -9,15 +9,16 @@ import RelicStep5 from "./step5/Step5";
 import OneTimeStep2 from "./onetimestep2/OneTimeStep2";
 import RelicStep6 from "./step6/Step6";
 import ComboSteps from "./combosteps/ComboSteps";
+import { Link } from "@mui/material";
 
 function RelicGuide() {
   return (
     <>
       <div style={{ margin: "10px" }}>
         Thank you to the{" "}
-        <a href="https://ffxiv.consolegameswiki.com/wiki/Resistance_Weapons">
+        <Link href="https://ffxiv.consolegameswiki.com/wiki/Resistance_Weapons">
           Consolegameswiki Resistance Weapon
-        </a>{" "}
+        </Link>{" "}
         page for supplying much of this information. Please keep in mind that
         the goal of this guide is to give optimal grinding methods and will rarely
         list alternatives such as Blue Mage.

@@ -5,6 +5,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Link,
   Box
 } from "@mui/material";
 import { useAtom } from "jotai";
@@ -48,9 +49,9 @@ function RelicStep6() {
         </AccordionSummary>
         <AccordionDetails>
           Step six requires you to obtain 15{" "}
-          <a href="https://ffxiv.consolegameswiki.com/wiki/Raw_Emotion">
+          <Link href="https://ffxiv.consolegameswiki.com/wiki/Raw_Emotion">
             Raw Emotions
-          </a>
+          </Link>
           <p>
             <u>
               This step should be done alongside step five if you are going for
@@ -74,13 +75,13 @@ function RelicStep6() {
             something like a 10 person run might not seem like enough, it
             certainly is. We don&quot;t have perfect data on how Dal scales but
             it&quot;s very similar to CLL so feel free to check out the{" "}
-            <a href="https://docs.google.com/spreadsheets/d/15VOR-2mV-vJUaptjEQRKQzommbh7T02K69wsb0UXq_U/edit?usp=sharing">
+            <Link href="https://docs.google.com/spreadsheets/d/15VOR-2mV-vJUaptjEQRKQzommbh7T02K69wsb0UXq_U/edit?usp=sharing">
               CLL + Dal Scaling Data
-            </a>{" "}
+            </Link>{" "}
             and if you want more info on how to optimize your Dals check our our{" "}
-            <a href="https://docs.google.com/presentation/d/1IXJalAFUasymj1nIxfF2ihi4wR7MpetGHJO41kgqZa4/edit?usp=sharing">
+            <Link href="https://docs.google.com/presentation/d/1IXJalAFUasymj1nIxfF2ihi4wR7MpetGHJO41kgqZa4/edit?usp=sharing">
               Dal Strategies Slideshow
-            </a>
+            </Link>
           </p>
           <p>
             This is however, the perfect step for those who want to get the

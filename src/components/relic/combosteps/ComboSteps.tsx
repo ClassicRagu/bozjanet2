@@ -4,7 +4,8 @@ import { ExpandMore } from "@mui/icons-material";
 import {
   Accordion,
   AccordionDetails,
-  AccordionSummary
+  AccordionSummary,
+  Link
 } from "@mui/material";
 import { useAtom } from "jotai";
 
@@ -43,13 +44,13 @@ function ComboSteps() {
           </ul>
           This is also an amazing way to grind Allagan Tomestones of Poetics so
           consider working on{" "}
-          <a href="https://ffxiv.consolegameswiki.com/wiki/Zodiac_Weapons">
+          <Link href="https://ffxiv.consolegameswiki.com/wiki/Zodiac_Weapons">
             Zodiac
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a href="https://ffxiv.consolegameswiki.com/wiki/Anima_Weapons">
+          <Link href="https://ffxiv.consolegameswiki.com/wiki/Anima_Weapons">
             Anima
-          </a>{" "}
+          </Link>{" "}
           relics if you are interested in those.
         </AccordionDetails>
       </Accordion>

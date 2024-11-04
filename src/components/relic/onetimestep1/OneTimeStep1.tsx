@@ -5,7 +5,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box
+  Box,
+  Link
 } from "@mui/material";
 import { useAtom } from "jotai";
 
@@ -63,14 +64,14 @@ function OneTimeStep1() {
           This one time step requires you to obtain 18 of 2 types of memories:{" "}
           <ul>
             <li>
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Haunting_Memory_of_the_Dying">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Haunting_Memory_of_the_Dying">
                 Haunting Memory of the Dying
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="https://ffxiv.consolegameswiki.com/wiki/Vexatious_Memory_of_the_Dying">
+              <Link href="https://ffxiv.consolegameswiki.com/wiki/Vexatious_Memory_of_the_Dying">
                 Vexatious Memory of the Dying
-              </a>
+              </Link>
             </li>
           </ul>
           This one time step is the only step that cannot be completed at all in
@@ -82,9 +83,9 @@ function OneTimeStep1() {
             <br />
             <br />
             According{" "}
-            <a href="https://ffxiv.consolegameswiki.com/wiki/Resistance_Weapons">
+            <Link href="https://ffxiv.consolegameswiki.com/wiki/Resistance_Weapons">
               ConsoleGamesWiki
-            </a>
+            </Link>
             , they also drop at an estimated 61% per FATE completed in
             Stormblood Areas with Haunting dropping from Gyr Abania and
             Vexatious dropping from Othard.

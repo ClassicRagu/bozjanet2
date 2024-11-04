@@ -5,6 +5,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Link,
   Box,
 } from "@mui/material";
 import { useAtom } from "jotai";
@@ -48,9 +49,9 @@ function RelicStep4() {
         </AccordionSummary>
         <AccordionDetails>
           Step four requires you to obtain 15{" "}
-          <a href="https://ffxiv.consolegameswiki.com/wiki/Loathsome_Memory_of_the_Dying">
+          <Link href="https://ffxiv.consolegameswiki.com/wiki/Loathsome_Memory_of_the_Dying">
             Loathsome Memory of the Dying
-          </a>
+          </Link>
           <p>
             There is really only one way to get these in any reasonable amount
             of time and that is to do Castrum Lacus Litore as each clear will
@@ -62,7 +63,7 @@ function RelicStep4() {
           </p>
           <p>
             If you are on NA, the discord server{" "}
-            <a href="https://discord.gg/foexiv">FOE</a> support CLL pings which
+            <Link href="https://discord.gg/foexiv">FOE</Link> support CLL pings which
             may make it easier to find more people to join CLL if it pops in
             your instance.
           </p>
@@ -71,13 +72,13 @@ function RelicStep4() {
             something like a 10 person run might not seem like enough, it
             certainly is. If you are curious on how CLL scales feel free to look
             at the{" "}
-            <a href="https://docs.google.com/spreadsheets/d/15VOR-2mV-vJUaptjEQRKQzommbh7T02K69wsb0UXq_U/edit?usp=sharing">
+            <Link href="https://docs.google.com/spreadsheets/d/15VOR-2mV-vJUaptjEQRKQzommbh7T02K69wsb0UXq_U/edit?usp=sharing">
               CLL Scaling Data
-            </a>{" "}
+            </Link>{" "}
             and if you want more info on how to optimize your CLLs check our our{" "}
-            <a href="https://docs.google.com/presentation/d/1IXJalAFUasymj1nIxfF2ihi4wR7MpetGHJO41kgqZa4/edit?usp=sharing">
+            <Link href="https://docs.google.com/presentation/d/1IXJalAFUasymj1nIxfF2ihi4wR7MpetGHJO41kgqZa4/edit?usp=sharing">
               CLL Strategies Slideshow
-            </a>
+            </Link>
           </p>
         </AccordionDetails>
       </Accordion>
