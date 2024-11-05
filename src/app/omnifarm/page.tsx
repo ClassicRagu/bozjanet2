@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import {
-  Box, Card, Modal
+  Box, Card, Link, Modal
 } from "@mui/material";
 
 function Relic() {
@@ -31,15 +31,15 @@ function Relic() {
           }}
         >
           <h2>
-            <a href="https://docs.google.com/document/d/1oAqt15SuzRPWgyr8CQUior57mPBDSJEej7N98jKCCpQ/edit#heading=h.tfrzpvg55vi8">
+            <Link href="https://docs.google.com/document/d/1oAqt15SuzRPWgyr8CQUior57mPBDSJEej7N98jKCCpQ/edit#heading=h.tfrzpvg55vi8">
               Full Guide
-            </a>
+            </Link>
           </h2>
           <p>
             {"Node 3: "}
-            <a href="https://docs.google.com/document/d/14xI0XLeknZfqFDlD3KVynCyVwTTYNuOPsdfymtWPf1c">
+            <Link href="https://docs.google.com/document/d/14xI0XLeknZfqFDlD3KVynCyVwTTYNuOPsdfymtWPf1c">
               {"Very Greedy's Rank V Guide"}
-            </a>
+            </Link>
           </p>
           <Box
             component="img"
