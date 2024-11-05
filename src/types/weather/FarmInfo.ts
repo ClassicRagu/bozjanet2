@@ -1,4 +1,6 @@
+import { AllowedWeathers } from "xivweather/lib/static/AllowedWeathers";
+
 export type FarmInfo = {
-  weathers: string[],
+  weathers: AllowedWeathers[],
   time: number
 };

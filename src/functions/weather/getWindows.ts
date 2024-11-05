@@ -3,13 +3,14 @@ import {
   findWeatherWindows
 } from "xivweather";
 import { getZone } from "./getZone";
+import { AllowedWeathers } from "xivweather/lib/static/AllowedWeathers";
 
 export const getWindows = (
   startTime: Date,
   weeks: number,
   windows: number,
   zone: string,
-  weathers: string[],
+  weathers: AllowedWeathers[],
   time: number
 ): WindowTimes[] => {
   const endTime = new Date(startTime.getTime() + weeks * 6.048e8);

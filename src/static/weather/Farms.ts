@@ -1,5 +1,23 @@
+import { AllowedWeathers } from "xivweather/lib/static/AllowedWeathers"
+
 // Time: -1 no time, 0 day, 1 night
-export const listEurekaFarms = [
+type EurekaFarm = {
+  name: string
+  farms: Farm[]
+}
+
+type Farm = {
+  name: string
+  weatherIcon: string
+  info: FarmInfo
+}
+
+type FarmInfo = {
+  weathers: AllowedWeathers[]
+  time: number
+}
+
+export const listEurekaFarms: EurekaFarm[] = [
   {
     name: "Pagos",
     farms: [
