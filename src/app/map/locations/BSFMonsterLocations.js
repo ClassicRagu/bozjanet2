@@ -505,17 +505,17 @@ export const bsfMonsterLocations = {
       {
         Monster: "Bird of Barathrum",
         Level: "Star",
-        Location: [33.4, 10.15],
+        Location: [24.1, 12.8],
       },
       {
         Monster: "Clingy Claire",
         Level: "Star",
-        Location: [33.15, 9.83],
+        Location: [17.5, 17.7],
       },
       {
         Monster: "Patty",
         Level: "Star",
-        Location: [33.15, 9.38],
+        Location: [8.6, 18.2],
       },
     ],
   },
