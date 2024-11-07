@@ -45,6 +45,8 @@ function ZadnorFragmentMap() {
           <MapContainer
             center={[21.5, 21.5]}
             zoom={4}
+            minZoom={4}
+            maxZoom={8}
             style={{ width: "100%", height: "100%" }}
             crs={L.CRS.Simple}
             bounds={bounds}
