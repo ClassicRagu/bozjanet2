@@ -1,27 +1,22 @@
-'use client'
-import * as React from "react";
+"use client";
 import { Card } from "@mui/material";
-import {
-  MapContainer,
-  ImageOverlay,
-  Popup,
-  Marker,
-} from "react-leaflet";
+import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
 
 import { fragments } from "../locations/Actions";
-import { Icon } from "leaflet";
+import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { bsfMarkerState } from "../hooks/bsfMarkerState";
+import { mapXY } from "./functions/mapXY";
 
-const bounds = [
-  [34, 9],
-  [32, 11],
+const bounds: LatLngBoundsExpression  = [
+  [1, 1],
+  [41.9, 41.9],
 ];
 
 function BSFFragmentMap() {
   const [fragment] = useAtom(fragmentState);
-  const [bsfMarkers] = useAtom(bsfMarkerState)
+  const [bsfMarkers] = useAtom(bsfMarkerState);
 
   return (
     <div
@@ -44,18 +39,20 @@ function BSFFragmentMap() {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "100%", height: "600px" }} className="App">
+        <div style={{ width: "100%", height: "650px" }} className="App">
           <MapContainer
-            center={[33, 10]}
-            zoom={9}
-            maxZoom={11}
-            minZoom={9}
+            center={[21.5, 21.5]}
+            zoom={4}
+            minZoom={4}
+            maxZoom={8}
             style={{ width: "100%", height: "100%" }}
             zoomControl={false}
+            crs={L.CRS.Simple}
+            bounds={bounds}
           >
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
-                position={[32.6, 9.65]}
+                position={mapXY(14.2, 29.6) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "starsmile.png",
@@ -69,7 +66,7 @@ function BSFFragmentMap() {
             ) : null}
             {fragment && fragments[fragment].CLL ? (
               <Marker
-                position={[33.4, 9.85]}
+                position={mapXY(18.9, 13.0) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",
@@ -83,7 +80,7 @@ function BSFFragmentMap() {
             ) : null}
             {fragment && (fragments[fragment].DR || fragments[fragment].DRS) ? (
               <Marker
-                position={[32.54, 9.6]}
+                position={mapXY(12.5, 32.1) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "Save The Queen.png",
@@ -98,10 +95,7 @@ function BSFFragmentMap() {
               </Marker>
             ) : null}
             {bsfMarkers}
-            <ImageOverlay
-              url="The Bozjan Southern Front.jpg"
-              bounds={bounds}
-            />
+            <ImageOverlay url="The Bozjan Southern Front.jpg" bounds={bounds} />
           </MapContainer>
         </div>
       </Card>
