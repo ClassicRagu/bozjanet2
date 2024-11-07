@@ -1,10 +1,14 @@
 import { atom } from "jotai";
 import { fragmentState } from "./fragmentState";
 import { fragments } from "../locations/Actions";
-import { Circle, Popup, Marker } from "react-leaflet";
+import { Circle, Popup, Marker, Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { setColor } from "../components/functions/setColor";
 import { Icon } from "leaflet";
+
+function mapXY(x, y) {
+  return [42.9 - y , x]
+}
 
 export const bsfMarkerState = atom((get) => {
   const fragment = get(fragmentState);
@@ -32,21 +36,23 @@ export const bsfMarkerState = atom((get) => {
               </Marker>
             );
           } else if (monster) {
+            const positions = monster.Positions.map((x) => {
+              return mapXY(x[0], x[1])
+            })
             tmp.push(
-              <Circle
+              <Polygon
                 key={`${monster.Monster}-${index}`}
-                center={[42.9-monster.Location[1], monster.Location[0]]}
                 pathOptions={{
                   fillColor: setColor(monster.Level),
                   color: setColor(monster.Level),
                 }}
-                radius={monster.radius}
+                positions={positions}
               >
                 <Popup>
                   {monster.Monster} <br /> Level:{monster.Level} <br />{" "}
                   {monster.additionalInfo}
                 </Popup>
-              </Circle>
+              </Polygon>
             );
           }
         });

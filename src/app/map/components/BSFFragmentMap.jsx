@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { Card } from "@mui/material";
-import { MapContainer, ImageOverlay, Popup, Circle } from "react-leaflet";
+import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
 import { setColor } from "../components/functions/setColor";
 
 import { fragments } from "../locations/Actions";
@@ -49,18 +49,6 @@ function BSFFragmentMap() {
             crs={L.CRS.Simple}
             bounds={bounds}
           >
-            <Circle
-              center={[42.9 - 29.3, 16.8]}
-              pathOptions={{
-                fillColor: setColor(1),
-                color: setColor(1),
-              }}
-              radius={1}
-            >
-              <Popup>
-                {1} <br /> Level:{1} <br /> {1}
-              </Popup>
-            </Circle>
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
                 position={[32.6, 9.65]}
