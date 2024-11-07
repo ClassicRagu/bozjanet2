@@ -1,12 +1,7 @@
-'use client'
+"use client";
 import * as React from "react";
 import { Card } from "@mui/material";
-import {
-  MapContainer,
-  ImageOverlay,
-  Popup,
-  Marker,
-} from "react-leaflet";
+import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { fragments } from "../locations/Actions";
@@ -14,6 +9,7 @@ import { Icon } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
+import { mapXY } from "./functions/mapXY";
 
 const bounds = [
   [1, 1],
@@ -22,7 +18,7 @@ const bounds = [
 
 function ZadnorFragmentMap() {
   const [fragment] = useAtom(fragmentState);
-  const [zadnorMarkers] = useAtom(zadnorMarkerState)
+  const [zadnorMarkers] = useAtom(zadnorMarkerState);
 
   return (
     <div
@@ -55,7 +51,7 @@ function ZadnorFragmentMap() {
           >
             {fragment && fragments[fragment].Dal ? (
               <Marker
-                position={[33.6, 10.4]}
+                position={mapXY(25.9, 8.2)}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",
@@ -68,10 +64,7 @@ function ZadnorFragmentMap() {
               </Marker>
             ) : null}
             {zadnorMarkers}
-            <ImageOverlay
-              url="Zadnor.jpg"
-              bounds={bounds}
-            />
+            <ImageOverlay url="Zadnor.jpg" bounds={bounds} />
           </MapContainer>
         </div>
       </Card>
