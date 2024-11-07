@@ -9,6 +9,7 @@ import { Icon } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { bsfMarkerState } from "../hooks/bsfMarkerState";
+import { mapXY } from "./functions/mapXY";
 
 const bounds = [
   [1, 1],
@@ -51,7 +52,7 @@ function BSFFragmentMap() {
           >
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
-                position={[32.6, 9.65]}
+                position={mapXY(14.2, 29.6)}
                 icon={
                   new Icon({
                     iconUrl: "starsmile.png",
@@ -65,7 +66,7 @@ function BSFFragmentMap() {
             ) : null}
             {fragment && fragments[fragment].CLL ? (
               <Marker
-                position={[33.4, 9.85]}
+                position={mapXY(18.9, 13.0)}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",
@@ -79,7 +80,7 @@ function BSFFragmentMap() {
             ) : null}
             {fragment && (fragments[fragment].DR || fragments[fragment].DRS) ? (
               <Marker
-                position={[32.54, 9.6]}
+                position={mapXY(12.5, 32.1)}
                 icon={
                   new Icon({
                     iconUrl: "Save The Queen.png",

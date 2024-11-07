@@ -5,10 +5,7 @@ import { Circle, Popup, Marker, Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { setColor } from "../components/functions/setColor";
 import { Icon } from "leaflet";
-
-function mapXY(x, y) {
-  return [42.9 - y , x]
-}
+import {mapXY} from "../components/functions/mapXY"
 
 export const bsfMarkerState = atom((get) => {
   const fragment = get(fragmentState);
@@ -21,7 +18,7 @@ export const bsfMarkerState = atom((get) => {
             tmp.push(
               <Marker
                 key={`${monster.Monster}-${index}`}
-                position={[42.9-monster.Location[1], monster.Location[0]]}
+                position={[42.9 - monster.Location[1], monster.Location[0]]}
                 icon={
                   new Icon({
                     iconUrl: "starsmile.png",
@@ -36,24 +33,26 @@ export const bsfMarkerState = atom((get) => {
               </Marker>
             );
           } else if (monster) {
-            const positions = monster.Positions.map((x) => {
-              return mapXY(x[0], x[1])
-            })
-            tmp.push(
-              <Polygon
-                key={`${monster.Monster}-${index}`}
-                pathOptions={{
-                  fillColor: setColor(monster.Level),
-                  color: setColor(monster.Level),
-                }}
-                positions={positions}
-              >
-                <Popup>
-                  {monster.Monster} <br /> Level:{monster.Level} <br />{" "}
-                  {monster.additionalInfo}
-                </Popup>
-              </Polygon>
-            );
+            if (monster.Positions) {
+              const positions = monster.Positions.map((x) => {
+                return mapXY(x[0], x[1]);
+              });
+              tmp.push(
+                <Polygon
+                  key={`${monster.Monster}-${index}`}
+                  pathOptions={{
+                    fillColor: setColor(monster.Level),
+                    color: setColor(monster.Level),
+                  }}
+                  positions={positions}
+                >
+                  <Popup>
+                    {monster.Monster} <br /> Level:{monster.Level} <br />{" "}
+                    {monster.additionalInfo}
+                  </Popup>
+                </Polygon>
+              );
+            }
           }
         });
       });
