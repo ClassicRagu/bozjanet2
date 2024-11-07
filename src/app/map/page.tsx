@@ -88,7 +88,7 @@ function FragmentLookup() {
                   setFragmentInputValue(newInputValue);
                 }}
                 onChange={(event, newValue) => {
-                  setFragment(newValue);
+                  setFragment(newValue ?? "");
                   setInputValue("");
                 }}
                 disablePortal
