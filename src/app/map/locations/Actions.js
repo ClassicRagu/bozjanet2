@@ -532,32 +532,33 @@ const zadnorTenacityCEs = [
     Monster: "Feeling the Burn",
     Level: "Critical Engagement",
     Location: [33.22, 9.93],
-    radius: 3500,
+    radius: 1,
   },
   {
     Monster: "Lean, Mean, Magitek Machines",
     Level: "Critical Engagement",
     Location: [33.42, 9.845],
-    radius: 3500,
+    radius: 1,
   },
   {
     Monster: "Looks to Die For",
     Level: "Critical Engagement",
     Location: [33.57, 9.95],
-    radius: 3500,
+    radius: 1,
   },
   {
     Monster: "Worn to a Shadow",
     Level: "Critical Engagement",
     Location: [33.675, 9.63],
-    radius: 3500,
+    radius: 1,
   },
 ];
 
 export const quartermasterCoords = [32.6, 9.653];
 
 export const fragmentList = [
-  "All",
+  "All_BSF",
+  "All_Zadnor",
   "Artistry",
   "Awakening",
   "Becoming",
@@ -672,7 +673,7 @@ export const fragments = {
   Heroism: { Dal: true },
   Cunning: { Dal: true },
   Revelation: { Dal: true },
-  All: {
+  All_BSF: {
     Quartermaster: true,
     CLL: true,
     BSF: [
@@ -689,6 +690,27 @@ export const fragments = {
       bsfMonsterLocations.Zone2.Star,
       bsfMonsterLocations.Zone3.Star,
       bsfResolveCEs,
+    ],
+  },
+  All_Zadnor: {
+    Dal: true,
+    Zadnor: [
+      zadnorMonsterLocations.Zone1.NormalRage,
+      zadnorMonsterLocations.Zone1.NormalFerocity,
+      zadnorMonsterLocations.Zone1.NormalBoth,
+      zadnorMonsterLocations.Zone2.Normal,
+      zadnorMonsterLocations.Zone3.Normal,
+      zadnorMonsterLocations.Zone3.Normal5,
+      zadnorMonsterLocations.Zone1.Ashkin,
+      zadnorMonsterLocations.Zone2.Ashkin,
+      zadnorMonsterLocations.Zone3.Ashkin,
+      zadnorMonsterLocations.Zone1.Sprites,
+      zadnorMonsterLocations.Zone2.Sprites,
+      zadnorMonsterLocations.Zone3.Sprites,
+      zadnorMonsterLocations.Zone1.Star,
+      zadnorMonsterLocations.Zone2.Star,
+      zadnorMonsterLocations.Zone3.Star,
+      zadnorTenacityCEs,
     ],
   },
 };

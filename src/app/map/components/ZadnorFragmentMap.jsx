@@ -16,8 +16,8 @@ import { fragmentState } from "../hooks/fragmentState";
 import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
 
 const bounds = [
-  [34, 9],
-  [32, 11.4],
+  [1, 1],
+  [41.9, 41.9],
 ];
 
 function ZadnorFragmentMap() {
@@ -45,15 +45,13 @@ function ZadnorFragmentMap() {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "100%", height: "600px" }} className="App">
+        <div style={{ width: "100%", height: "650px" }} className="App">
           <MapContainer
-            center={[33, 10.18]}
-            zoom={8.499}
-            maxZoom={11}
-            minZoom={8.499}
+            center={[21.5, 21.5]}
+            zoom={4}
             style={{ width: "100%", height: "100%" }}
-            zoomControl={false}
             crs={L.CRS.Simple}
+            bounds={bounds}
           >
             {fragment && fragments[fragment].Dal ? (
               <Marker
