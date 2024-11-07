@@ -91,8 +91,16 @@ export const bsfMonsterLocations = {
       {
         Monster: "Rain Sprite",
         Level: 4,
-        Location: [32.83, 10.47],
-        radius: 5000,
+        Positions: [
+          [30.3, 25.8],
+          [30.6, 24.6],
+          [31.2, 25.0],
+          [33.5, 25.2],
+          [33.5, 26.0],
+          [32.6, 25.8],
+          [32.0, 25.5],
+          [30.3, 25.8],
+        ],
         additionalInfo: "Rain only",
       },
       {
@@ -314,8 +322,14 @@ export const bsfMonsterLocations = {
       {
         Monster: "Rain Sprite",
         Level: 2,
-        Location: [33.03, 10.43],
-        radius: 5000,
+        Positions: [
+          [29.2, 20.1],
+          [30.3, 20.1],
+          [30.6, 20.5],
+          [30.8, 20.9],
+          [30.0, 21.2],
+          [29.5, 20.9],
+        ],
         additionalInfo: "Rain only",
       },
       {
@@ -587,8 +601,17 @@ export const bsfMonsterLocations = {
       {
         Monster: "Rain Sprite",
         Level: 3,
-        Location: [33.13, 9.75],
-        radius: 5500,
+        Positions: [
+          [17.8, 18.1],
+          [18.4, 18.6],
+          [18.0, 18.9],
+          [17.4, 19.3],
+          [16.8, 19.4],
+          [15.1, 19.6],
+          [15.1, 19.1],
+          [16.4, 19.0],
+          [17.1, 18.8],
+        ],
         additionalInfo: "Rain only",
       },
       {

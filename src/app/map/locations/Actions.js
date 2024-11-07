@@ -531,26 +531,26 @@ const zadnorTenacityCEs = [
   {
     Monster: "Feeling the Burn",
     Level: "Critical Engagement",
-    Location: [33.22, 9.93],
-    radius: 1,
+    Location: [16.7, 17.0],
+    radius: 0.6,
   },
   {
     Monster: "Lean, Mean, Magitek Machines",
     Level: "Critical Engagement",
-    Location: [33.42, 9.845],
-    radius: 1,
+    Location: [15.2, 12.9],
+    radius: 0.6,
   },
   {
     Monster: "Looks to Die For",
     Level: "Critical Engagement",
-    Location: [33.57, 9.95],
-    radius: 1,
+    Location: [17.3, 9.9],
+    radius: 0.6,
   },
   {
     Monster: "Worn to a Shadow",
     Level: "Critical Engagement",
-    Location: [33.675, 9.63],
-    radius: 1,
+    Location: [11.7, 7.6],
+    radius: 0.6,
   },
 ];
 
