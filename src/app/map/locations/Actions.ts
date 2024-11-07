@@ -597,7 +597,26 @@ export const fragmentList = [
   "Violence",
 ];
 
-export const fragments = {
+type Fragments = {
+  BSF?: MonsterLocation[][];
+  Zadnor?: MonsterLocation[][];
+  Quartermaster?: boolean
+  CLL?: boolean
+  Dal?: boolean
+  DR?: boolean
+  DRS?: boolean
+};
+
+type MonsterLocation = {
+  Monster: string;
+  Level: number | string;
+  Positions?: number[][];
+  Location?: number[];
+  radius?: number;
+  additionalInfo?: string;
+};
+
+export const fragments: { [key: string]: Fragments } = {
   Skill: { BSF: [bsfMonsterLocations.Zone1.Normal] },
   Awakening: { BSF: [bsfMonsterLocations.Zone2.Normal] },
   Compassion: {

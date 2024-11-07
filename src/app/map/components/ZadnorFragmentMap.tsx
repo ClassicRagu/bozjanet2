@@ -5,13 +5,13 @@ import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { fragments } from "../locations/Actions";
-import { Icon } from "leaflet";
+import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
 import { mapXY } from "./functions/mapXY";
 
-const bounds = [
+const bounds: LatLngBoundsExpression = [
   [1, 1],
   [41.9, 41.9],
 ];
@@ -51,7 +51,7 @@ function ZadnorFragmentMap() {
           >
             {fragment && fragments[fragment].Dal ? (
               <Marker
-                position={mapXY(25.9, 8.2)}
+                position={mapXY(25.9, 8.2) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",

@@ -4,17 +4,17 @@ import { fragments } from "../locations/Actions";
 import { Circle, Popup, Marker, Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { setColor } from "../components/functions/setColor";
-import { Icon } from "leaflet";
+import { Icon, LatLngExpression, LatLngTuple } from "leaflet";
 import { mapXY } from "../components/functions/mapXY";
 
 export const bsfMarkerState = atom((get) => {
   const fragment = get(fragmentState);
   if (fragment !== "") {
-    const tmp = [];
+    const tmp: React.JSX.Element[] = [];
     if (fragments[fragment].BSF)
       fragments[fragment].BSF.forEach((locations, index) => {
         locations.forEach((monster) => {
-          if (monster.Level === "Star") {
+          if (monster.Level === "Star" && monster.Location) {
             tmp.push(
               <Marker
                 key={`${monster.Monster}-${index}`}
@@ -44,7 +44,7 @@ export const bsfMarkerState = atom((get) => {
                     fillColor: setColor(monster.Level),
                     color: setColor(monster.Level),
                   }}
-                  positions={positions}
+                  positions={positions as LatLngTuple[]}
                 >
                   <Popup>
                     {monster.Monster} <br /> Level:{monster.Level} <br />{" "}
@@ -53,22 +53,24 @@ export const bsfMarkerState = atom((get) => {
                 </Polygon>
               );
             } else if (monster.Level == "Critical Engagement") {
-              tmp.push(
-                <Circle
-                  key={`${monster.Monster}-${index}`}
-                  center={mapXY(monster.Location[0], monster.Location[1])}
-                  pathOptions={{
-                    fillColor: setColor(monster.Level),
-                    color: setColor(monster.Level),
-                  }}
-                  radius={monster.radius}
-                >
-                  <Popup>
-                    {monster.Monster} <br /> Level:{monster.Level} <br />{" "}
-                    {monster.additionalInfo}
-                  </Popup>
-                </Circle>
-              );
+              if (monster.Location) {
+                tmp.push(
+                  <Circle
+                    key={`${monster.Monster}-${index}`}
+                    center={mapXY(monster.Location[0], monster.Location[1]) as LatLngExpression}
+                    pathOptions={{
+                      fillColor: setColor(monster.Level),
+                      color: setColor(monster.Level),
+                    }}
+                    radius={monster.radius ?? 1}
+                  >
+                    <Popup>
+                      {monster.Monster} <br /> Level:{monster.Level} <br />{" "}
+                      {monster.additionalInfo}
+                    </Popup>
+                  </Circle>
+                );
+              }
             }
           }
         });

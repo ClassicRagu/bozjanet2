@@ -1,17 +1,15 @@
 "use client";
-import * as React from "react";
 import { Card } from "@mui/material";
 import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
-import { setColor } from "../components/functions/setColor";
 
 import { fragments } from "../locations/Actions";
-import { Icon } from "leaflet";
+import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { bsfMarkerState } from "../hooks/bsfMarkerState";
 import { mapXY } from "./functions/mapXY";
 
-const bounds = [
+const bounds: LatLngBoundsExpression  = [
   [1, 1],
   [41.9, 41.9],
 ];
@@ -52,7 +50,7 @@ function BSFFragmentMap() {
           >
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
-                position={mapXY(14.2, 29.6)}
+                position={mapXY(14.2, 29.6) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "starsmile.png",
@@ -66,7 +64,7 @@ function BSFFragmentMap() {
             ) : null}
             {fragment && fragments[fragment].CLL ? (
               <Marker
-                position={mapXY(18.9, 13.0)}
+                position={mapXY(18.9, 13.0) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",
@@ -80,7 +78,7 @@ function BSFFragmentMap() {
             ) : null}
             {fragment && (fragments[fragment].DR || fragments[fragment].DRS) ? (
               <Marker
-                position={mapXY(12.5, 32.1)}
+                position={mapXY(12.5, 32.1) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "Save The Queen.png",

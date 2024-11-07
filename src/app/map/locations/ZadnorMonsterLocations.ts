@@ -196,8 +196,7 @@ export const zadnorMonsterLocations = {
       {
         Monster: "Wind Sprite",
         Level: 5,
-        Location: [32.275, 9.9],
-        radius: 7000,
+        Positions: [],
         additionalInfo: "Wind only",
       },
     ],
@@ -388,8 +387,7 @@ export const zadnorMonsterLocations = {
       {
         Monster: "Wind Sprite",
         Level: 2,
-        Location: [32.23, 9.32],
-        radius: 7000,
+        Positions: [],
         additionalInfo: "Wind only",
       },
       {
@@ -748,8 +746,7 @@ export const zadnorMonsterLocations = {
       {
         Monster: "Wind Sprite",
         Level: 4,
-        Location: [33.48, 9.95],
-        radius: 5000,
+        Positions: [],
         additionalInfo: "Wind only",
       },
       {
