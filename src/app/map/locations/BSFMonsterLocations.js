@@ -4,8 +4,8 @@ export const bsfMonsterLocations = {
       {
         Monster: "Bozjan Nepenthes",
         Level: 1,
-        Location: [32.63, 9.78],
-        radius: 4000,
+        Location: [16.8, 29.3],
+        radius: 1,
       },
       {
         Monster: "Bozjan Orobon",

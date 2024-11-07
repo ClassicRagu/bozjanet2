@@ -1,12 +1,8 @@
-'use client'
+"use client";
 import * as React from "react";
 import { Card } from "@mui/material";
-import {
-  MapContainer,
-  ImageOverlay,
-  Popup,
-  Marker,
-} from "react-leaflet";
+import { MapContainer, ImageOverlay, Popup, Circle } from "react-leaflet";
+import { setColor } from "../components/functions/setColor";
 
 import { fragments } from "../locations/Actions";
 import { Icon } from "leaflet";
@@ -15,13 +11,13 @@ import { fragmentState } from "../hooks/fragmentState";
 import { bsfMarkerState } from "../hooks/bsfMarkerState";
 
 const bounds = [
-  [34, 9],
-  [32, 11],
+  [1, 1],
+  [41.9, 41.9],
 ];
 
 function BSFFragmentMap() {
   const [fragment] = useAtom(fragmentState);
-  const [bsfMarkers] = useAtom(bsfMarkerState)
+  const [bsfMarkers] = useAtom(bsfMarkerState);
 
   return (
     <div
@@ -44,15 +40,27 @@ function BSFFragmentMap() {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "100%", height: "600px" }} className="App">
+        <div style={{ width: "100%", height: "650px" }} className="App">
           <MapContainer
-            center={[33, 10]}
-            zoom={9}
-            maxZoom={11}
-            minZoom={9}
+            center={[21.5, 21.5]}
+            zoom={4}
             style={{ width: "100%", height: "100%" }}
             zoomControl={false}
+            crs={L.CRS.Simple}
+            bounds={bounds}
           >
+            <Circle
+              center={[42.9 - 29.3, 16.8]}
+              pathOptions={{
+                fillColor: setColor(1),
+                color: setColor(1),
+              }}
+              radius={1}
+            >
+              <Popup>
+                {1} <br /> Level:{1} <br /> {1}
+              </Popup>
+            </Circle>
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
                 position={[32.6, 9.65]}
@@ -98,10 +106,7 @@ function BSFFragmentMap() {
               </Marker>
             ) : null}
             {bsfMarkers}
-            <ImageOverlay
-              url="The Bozjan Southern Front.jpg"
-              bounds={bounds}
-            />
+            <ImageOverlay url="The Bozjan Southern Front.jpg" bounds={bounds} />
           </MapContainer>
         </div>
       </Card>

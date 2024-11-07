@@ -17,7 +17,7 @@ export const bsfMarkerState = atom((get) => {
             tmp.push(
               <Marker
                 key={`${monster.Monster}-${index}`}
-                position={monster.Location}
+                position={[42.9-monster.Location[1], monster.Location[0]]}
                 icon={
                   new Icon({
                     iconUrl: "starsmile.png",
@@ -35,7 +35,7 @@ export const bsfMarkerState = atom((get) => {
             tmp.push(
               <Circle
                 key={`${monster.Monster}-${index}`}
-                center={monster.Location}
+                center={[42.9-monster.Location[1], monster.Location[0]]}
                 pathOptions={{
                   fillColor: setColor(monster.Level),
                   color: setColor(monster.Level),

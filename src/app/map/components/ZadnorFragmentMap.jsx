@@ -53,6 +53,7 @@ function ZadnorFragmentMap() {
             minZoom={8.499}
             style={{ width: "100%", height: "100%" }}
             zoomControl={false}
+            crs={L.CRS.Simple}
           >
             {fragment && fragments[fragment].Dal ? (
               <Marker
