@@ -1,6 +1,11 @@
 "use client";
 import { Card } from "@mui/material";
-import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
+import {
+  MapContainer,
+  ImageOverlay,
+  Popup,
+  Marker, Circle
+} from "react-leaflet";
 
 import { fragments } from "../locations/Actions";
 import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
@@ -8,14 +13,17 @@ import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { bsfMarkerState } from "../hooks/bsfMarkerState";
 import { mapXY } from "./functions/mapXY";
+import { BSFClusterMobs } from "../locations/BSFClusterMobs";
+import { magitekState } from "../hooks/magitekState";
 
-const bounds: LatLngBoundsExpression  = [
+const bounds: LatLngBoundsExpression = [
   [1, 1],
-  [41.9, 41.9],
+  [42, 42],
 ];
 
 function BSFFragmentMap() {
   const [fragment] = useAtom(fragmentState);
+  const [magitek] = useAtom(magitekState);
   const [bsfMarkers] = useAtom(bsfMarkerState);
 
   return (
@@ -50,6 +58,19 @@ function BSFFragmentMap() {
             crs={L.CRS.Simple}
             bounds={bounds}
           >
+            {magitek
+              ? BSFClusterMobs.map((x, index) => {
+                  return (
+                    <Circle
+                      key={`cluster-mob-${index}`}
+                      center={mapXY(x[0], x[1]) as LatLngTuple}
+                      radius={0.06}
+                      color={"grey"}
+                    ></Circle>
+                  );
+                })
+              : null}
+
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
                 position={mapXY(14.2, 29.6) as LatLngTuple}

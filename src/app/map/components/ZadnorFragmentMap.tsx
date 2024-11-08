@@ -1,7 +1,13 @@
 "use client";
 import * as React from "react";
 import { Card } from "@mui/material";
-import { MapContainer, ImageOverlay, Popup, Marker } from "react-leaflet";
+import {
+  MapContainer,
+  ImageOverlay,
+  Popup,
+  Marker,
+  Circle,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { fragments } from "../locations/Actions";
@@ -10,14 +16,17 @@ import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
 import { mapXY } from "./functions/mapXY";
+import { ZadnorClusterMobs } from "../locations/ZadnorClusterMobs";
+import { magitekState } from "../hooks/magitekState";
 
 const bounds: LatLngBoundsExpression = [
   [1, 1],
-  [41.9, 41.9],
+  [42, 42],
 ];
 
 function ZadnorFragmentMap() {
   const [fragment] = useAtom(fragmentState);
+  const [magitek] = useAtom(magitekState);
   const [zadnorMarkers] = useAtom(zadnorMarkerState);
 
   return (
@@ -51,6 +60,18 @@ function ZadnorFragmentMap() {
             crs={L.CRS.Simple}
             bounds={bounds}
           >
+            {magitek
+              ? ZadnorClusterMobs.map((x, index) => {
+                  return (
+                    <Circle
+                      key={`cluster-mob-${index}`}
+                      center={mapXY(x[0], x[1]) as LatLngTuple}
+                      radius={0.06}
+                      color={"grey"}
+                    ></Circle>
+                  );
+                })
+              : null}
             {fragment && fragments[fragment].Dal ? (
               <Marker
                 position={mapXY(25.9, 8.2) as LatLngTuple}
