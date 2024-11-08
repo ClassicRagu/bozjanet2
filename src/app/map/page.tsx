@@ -1,24 +1,42 @@
-"use client"
+"use client";
 import * as React from "react";
-import { Autocomplete, Link, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Checkbox,
+  FormControl,
+  FormControlLabel, Link,
+  TextField
+} from "@mui/material";
 import { Card } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 
-import { listActions, actions, fragments, fragmentList } from "./locations/Actions";
+import {
+  listActions,
+  actions,
+  fragments,
+  fragmentList,
+} from "./locations/Actions";
 import { useAtom } from "jotai";
 import { fragmentState } from "./hooks/fragmentState";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
+import { magitekState } from "./hooks/magitekState";
 
-const BSFFragmentMap = dynamic(() => import("./components/BSFFragmentMap"), {ssr: false});
-const ZadnorFragmentMap = dynamic(() => import("./components/ZadnorFragmentMap"), {ssr: false});
+const BSFFragmentMap = dynamic(() => import("./components/BSFFragmentMap"), {
+  ssr: false,
+});
+const ZadnorFragmentMap = dynamic(
+  () => import("./components/ZadnorFragmentMap"),
+  { ssr: false }
+);
 
-// This map pages will need to be moved to TS eventually. I'm leaving them 
+// This map pages will need to be moved to TS eventually. I'm leaving them
 // on JS for the initial release as there are a far more changes to be
 // made than the other files
 
 function FragmentLookup() {
   const [inputValue, setInputValue] = React.useState("");
   const [fragment, setFragment] = useAtom(fragmentState);
+  const [magitek, setMagitek] = useAtom(magitekState);
   const [fragmentInputValue, setFragmentInputValue] = React.useState("");
 
   return (
@@ -48,62 +66,80 @@ function FragmentLookup() {
               Thank you to <Link href="https://xivapi.com/">XIVApi</Link> for
               providing the map and icons.
             </p>
-            <div style={{ display: "inline" }}>
-              <Autocomplete
-                inputValue={inputValue}
-                onInputChange={(event, newInputValue) => {
-                  if (newInputValue !== undefined) {
-                    setInputValue(newInputValue);
-                  } else {
+            <div
+              style={{
+                display: "inline",
+              }}
+            >
+                <Autocomplete
+                  inputValue={inputValue}
+                  onInputChange={(event, newInputValue) => {
+                    if (newInputValue !== undefined) {
+                      setInputValue(newInputValue);
+                    } else {
+                      setInputValue("");
+                    }
+                  }}
+                  value={inputValue}
+                  onChange={(event, newValue) => {
+                    const val = actions.filter(
+                      (x) => x.ActionName === newValue
+                    )[0];
+                    if (val) {
+                      setFragment(val.Fragment);
+                      setFragmentInputValue(val.Fragment);
+                    }
+                  }}
+                  disablePortal
+                  id="combo-box-demo"
+                  options={listActions}
+                  style={{
+                    float: "left",
+                  }}
+                  sx={{ m: 1, minWidth: 350 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Action/Essence/Item" />
+                  )}
+                />
+                <Autocomplete
+                  inputValue={fragmentInputValue}
+                  value={fragmentInputValue}
+                  onInputChange={(event, newInputValue) => {
+                    setFragmentInputValue(newInputValue);
+                  }}
+                  onChange={(event, newValue) => {
+                    setFragment(newValue ?? "");
                     setInputValue("");
+                  }}
+                  disablePortal
+                  id="combo-box-demo"
+                  options={fragmentList}
+                  style={{
+                    float: "left",
+                  }}
+                  sx={{ m: 1, minWidth: 275 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Fragment" />
+                  )}
+                />
+              <FormControl sx={{ m: 1 }}>
+                <FormControlLabel
+                  style={{
+                    alignItems: "left",
+                    verticalAlign: "middle",
+                    paddingTop: "5px"
+                  }}
+                  control={
+                    <Checkbox
+                      checked={magitek}
+                      onClick={() => {
+                        setMagitek(!magitek);
+                      }}
+                    />
                   }
-                }}
-                value={inputValue}
-                onChange={(event, newValue) => {
-                  const val = actions.filter(
-                    (x) => x.ActionName === newValue
-                  )[0];
-                  if (val) {
-                    setFragment(val.Fragment);
-                    setFragmentInputValue(val.Fragment);
-                  }
-                }}
-                disablePortal
-                id="combo-box-demo"
-                options={listActions}
-                style={{
-                  color: "blue",
-                  margin: "10px",
-                  minWidth: "350px",
-                  float: "left",
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Action/Essence/Item" />
-                )}
-              />
-              <Autocomplete
-                inputValue={fragmentInputValue}
-                value={fragmentInputValue}
-                onInputChange={(event, newInputValue) => {
-                  setFragmentInputValue(newInputValue);
-                }}
-                onChange={(event, newValue) => {
-                  setFragment(newValue ?? "");
-                  setInputValue("");
-                }}
-                disablePortal
-                id="combo-box-demo"
-                options={fragmentList}
-                style={{
-                  color: "blue",
-                  margin: "10px",
-                  minWidth: "350px",
-                  float: "left",
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Fragment" />
-                )}
-              />
+                  label="Magitek"
+                />
+              </FormControl>
             </div>
           </Card>
         </div>
