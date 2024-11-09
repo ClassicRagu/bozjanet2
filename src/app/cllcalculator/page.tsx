@@ -93,7 +93,7 @@ function CLL() {
           >
             <Button
               size="large"
-              style={{ minWidth: "250px" }}
+              style={{ minWidth: "250px", backgroundColor:"palegreen" }}
               onClick={() => {
                 handleStart();
                 setCLLTime(3600);
@@ -157,7 +157,7 @@ function CLL() {
           >
             <Button
               size="large"
-              style={{ minWidth: "250px", backgroundColor: "darkred" }}
+              style={{ minWidth: "250px", backgroundColor: "#CD5C5C" }}
               onClick={() => {
                 handleStop();
               }}
@@ -189,7 +189,7 @@ function CLL() {
             <br />
             Each Skirmish successfully completed cuts the time down by 1 minute.
             <br />
-            Each CE or Duel successfully completed cuts the time down by 6
+            Each CE or Duel successfully completed cuts the time down by 5
             minutes.
           </p>
         </div>
