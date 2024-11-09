@@ -117,7 +117,7 @@ function CLL() {
               size="large"
               style={{ minWidth: "250px" }}
               onClick={() => {
-                setCLLTime(cllTime - 360);
+                setCLLTime(cllTime - 300);
               }}
               variant={"contained"}
               startIcon={<Avatar variant="square" src={"cll/Duel.png"} />}
