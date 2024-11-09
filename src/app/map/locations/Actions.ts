@@ -510,20 +510,20 @@ const bsfResolveCEs = [
   {
     Monster: "Trampled under Hoof",
     Level: "Critical Engagement",
-    Location: [33.17, 9.44],
-    radius: 3500,
+    Location: [9.9, 18.0],
+    radius: 0.75,
   },
   {
     Monster: "Where Strode the Behemoth",
     Level: "Critical Engagement",
-    Location: [33.32, 10.09],
-    radius: 3500,
+    Location: [23.3, 15.0],
+    radius: 0.75,
   },
   {
     Monster: "Metal Fox Chaos",
     Level: "Critical Engagement",
-    Location: [33.145, 9.645],
-    radius: 3500,
+    Location: [14.2, 18.3],
+    radius: 0.75,
   },
 ];
 
@@ -531,86 +531,113 @@ const zadnorTenacityCEs = [
   {
     Monster: "Feeling the Burn",
     Level: "Critical Engagement",
-    Location: [33.22, 9.93],
-    radius: 3500,
+    Location: [16.7, 17.0],
+    radius: 0.6,
   },
   {
     Monster: "Lean, Mean, Magitek Machines",
     Level: "Critical Engagement",
-    Location: [33.42, 9.845],
-    radius: 3500,
+    Location: [15.2, 12.9],
+    radius: 0.6,
   },
   {
     Monster: "Looks to Die For",
     Level: "Critical Engagement",
-    Location: [33.57, 9.95],
-    radius: 3500,
+    Location: [17.3, 9.9],
+    radius: 0.6,
   },
   {
     Monster: "Worn to a Shadow",
     Level: "Critical Engagement",
-    Location: [33.675, 9.63],
-    radius: 3500,
+    Location: [11.7, 7.6],
+    radius: 0.6,
   },
 ];
 
 export const quartermasterCoords = [32.6, 9.653];
 
 export const fragmentList = [
+  "All_BSF",
+  "All_Zadnor",
   "Artistry",
-    "Awakening",
-    "Becoming",
-    "Caprice",
-    "Care",
-    "Caution",
-    "Clarity",
-    "Compassion",
-    "Contention",
-    "Cunning",
-    "Deception",
-    "Desperation",
-    "Divinity",
-    "Ferocity",
-    "Finesse",
-    "Fortitude",
-    "Heroism",
-    "Hope",
-    "History",
-    "Ingenuity",
-    "Inspiration",
-    "Loss",
-    "Mastery",
-    "Moonlight",
-    "Observation",
-    "Preparation",
-    "Rage",
-    "Resolve",
-    "Revelation",
-    "Sagacity",
-    "Skill",
-    "Superstition",
-    "Support",
-    "Tenacity",
-    "Transcendence",
-    "Violence"
-  ]
+  "Awakening",
+  "Becoming",
+  "Caprice",
+  "Care",
+  "Caution",
+  "Clarity",
+  "Compassion",
+  "Contention",
+  "Cunning",
+  "Deception",
+  "Desperation",
+  "Divinity",
+  "Ferocity",
+  "Finesse",
+  "Fortitude",
+  "Heroism",
+  "Hope",
+  "History",
+  "Ingenuity",
+  "Inspiration",
+  "Loss",
+  "Mastery",
+  "Moonlight",
+  "Observation",
+  "Preparation",
+  "Rage",
+  "Resolve",
+  "Revelation",
+  "Sagacity",
+  "Skill",
+  "Superstition",
+  "Support",
+  "Tenacity",
+  "Transcendence",
+  "Violence",
+];
 
-export const fragments = {
+type Fragments = {
+  BSF?: MonsterLocation[][];
+  Zadnor?: MonsterLocation[][];
+  Quartermaster?: boolean
+  CLL?: boolean
+  Dal?: boolean
+  DR?: boolean
+  DRS?: boolean
+};
+
+type MonsterLocation = {
+  Monster: string;
+  Level: number | string;
+  Positions?: number[][];
+  Location?: number[];
+  radius?: number;
+  additionalInfo?: string;
+};
+
+export const fragments: { [key: string]: Fragments } = {
   Skill: { BSF: [bsfMonsterLocations.Zone1.Normal] },
   Awakening: { BSF: [bsfMonsterLocations.Zone2.Normal] },
-  Compassion: { BSF: [bsfMonsterLocations.Zone3.Normal], Zadnor: [zadnorMonsterLocations.Zone3.Normal5] },
+  Compassion: {
+    BSF: [bsfMonsterLocations.Zone3.Normal],
+    Zadnor: [zadnorMonsterLocations.Zone3.Normal5],
+  },
   Care: {
     BSF: [bsfMonsterLocations.Zone2.Ashkin, bsfMonsterLocations.Zone2.Sprites],
-    Zadnor: [zadnorMonsterLocations.Zone2.Ashkin]
+    Zadnor: [zadnorMonsterLocations.Zone2.Ashkin],
   },
   Caution: { Quartermaster: true, BSF: [bsfMonsterLocations.Zone1.Star] },
-  Support: { BSF: [bsfMonsterLocations.Zone3.Sprites], Zadnor: [zadnorMonsterLocations.Zone3.Sprites] },
+  Support: {
+    BSF: [bsfMonsterLocations.Zone3.Sprites],
+    Zadnor: [zadnorMonsterLocations.Zone3.Sprites],
+  },
   Violence: {
     BSF: [bsfMonsterLocations.Zone3.Ashkin, bsfMonsterLocations.Zone3.Star],
   },
   Preparation: {
     BSF: [bsfMonsterLocations.Zone1.Ashkin, bsfMonsterLocations.Zone1.Sprites],
-    Zadnor: [zadnorMonsterLocations.Zone1.Ashkin]
+    Zadnor: [zadnorMonsterLocations.Zone1.Ashkin],
   },
   Ingenuity: { Quartermaster: true, BSF: [bsfMonsterLocations.Zone2.Star] },
   Resolve: { BSF: [bsfResolveCEs] },
@@ -620,24 +647,89 @@ export const fragments = {
   Transcendence: { CLL: true },
   Becoming: { CLL: true },
   Caprice: { CLL: true },
-  Clarity: {DR: true, Quartermaster: true},
-  Contention: {DR: true, Quartermaster: true},
-  Deception: {DRS: true},
-  Divinity: {DR: true, Quartermaster: true},
-  Finesse: {DR: true, Quartermaster: true},
-  Fortitude: {DR: true, Quartermaster: true},
-  Loss: {DR: true},
-  Observation: {DR: true, Quartermaster: true},
-  Hope: {Quartermaster: true},
-  Moonlight: {Zadnor: [zadnorMonsterLocations.Zone2.Normal]},
-  Rage: {Zadnor: [zadnorMonsterLocations.Zone1.NormalRage, zadnorMonsterLocations.Zone1.NormalBoth]},
-  Ferocity: {Zadnor: [zadnorMonsterLocations.Zone1.NormalFerocity, zadnorMonsterLocations.Zone1.NormalBoth] },
-  Desperation: {Zadnor: [zadnorMonsterLocations.Zone3.Normal]},
-  Tenacity: {Zadnor: [zadnorTenacityCEs]},
-  History: {Zadnor: [zadnorMonsterLocations.Zone1.Sprites, zadnorMonsterLocations.Zone1.Star]},
-  Inspiration: {Zadnor: [zadnorMonsterLocations.Zone3.Ashkin, zadnorMonsterLocations.Zone3.Star]},
-  Artistry: {Zadnor: [zadnorMonsterLocations.Zone2.Sprites, zadnorMonsterLocations.Zone2.Star]},
-  Heroism: {Dal: true},
-  Cunning: {Dal: true},
-  Revelation: {Dal: true}
+  Clarity: { DR: true, Quartermaster: true },
+  Contention: { DR: true, Quartermaster: true },
+  Deception: { DRS: true },
+  Divinity: { DR: true, Quartermaster: true },
+  Finesse: { DR: true, Quartermaster: true },
+  Fortitude: { DR: true, Quartermaster: true },
+  Loss: { DR: true },
+  Observation: { DR: true, Quartermaster: true },
+  Hope: { Quartermaster: true },
+  Moonlight: { Zadnor: [zadnorMonsterLocations.Zone2.Normal] },
+  Rage: {
+    Zadnor: [
+      zadnorMonsterLocations.Zone1.NormalRage,
+      zadnorMonsterLocations.Zone1.NormalBoth,
+    ],
+  },
+  Ferocity: {
+    Zadnor: [
+      zadnorMonsterLocations.Zone1.NormalFerocity,
+      zadnorMonsterLocations.Zone1.NormalBoth,
+    ],
+  },
+  Desperation: { Zadnor: [zadnorMonsterLocations.Zone3.Normal] },
+  Tenacity: { Zadnor: [zadnorTenacityCEs] },
+  History: {
+    Zadnor: [
+      zadnorMonsterLocations.Zone1.Sprites,
+      zadnorMonsterLocations.Zone1.Star,
+    ],
+  },
+  Inspiration: {
+    Zadnor: [
+      zadnorMonsterLocations.Zone3.Ashkin,
+      zadnorMonsterLocations.Zone3.Star,
+    ],
+  },
+  Artistry: {
+    Zadnor: [
+      zadnorMonsterLocations.Zone2.Sprites,
+      zadnorMonsterLocations.Zone2.Star,
+    ],
+  },
+  Heroism: { Dal: true },
+  Cunning: { Dal: true },
+  Revelation: { Dal: true },
+  All_BSF: {
+    Quartermaster: true,
+    CLL: true,
+    BSF: [
+      bsfMonsterLocations.Zone1.Normal,
+      bsfMonsterLocations.Zone2.Normal,
+      bsfMonsterLocations.Zone3.Normal,
+      bsfMonsterLocations.Zone1.Ashkin,
+      bsfMonsterLocations.Zone2.Ashkin,
+      bsfMonsterLocations.Zone3.Ashkin,
+      bsfMonsterLocations.Zone1.Sprites,
+      bsfMonsterLocations.Zone2.Sprites,
+      bsfMonsterLocations.Zone3.Sprites,
+      bsfMonsterLocations.Zone1.Star,
+      bsfMonsterLocations.Zone2.Star,
+      bsfMonsterLocations.Zone3.Star,
+      bsfResolveCEs,
+    ],
+  },
+  All_Zadnor: {
+    Dal: true,
+    Zadnor: [
+      zadnorMonsterLocations.Zone1.NormalRage,
+      zadnorMonsterLocations.Zone1.NormalFerocity,
+      zadnorMonsterLocations.Zone1.NormalBoth,
+      zadnorMonsterLocations.Zone2.Normal,
+      zadnorMonsterLocations.Zone3.Normal,
+      zadnorMonsterLocations.Zone3.Normal5,
+      zadnorMonsterLocations.Zone1.Ashkin,
+      zadnorMonsterLocations.Zone2.Ashkin,
+      zadnorMonsterLocations.Zone3.Ashkin,
+      zadnorMonsterLocations.Zone1.Sprites,
+      zadnorMonsterLocations.Zone2.Sprites,
+      zadnorMonsterLocations.Zone3.Sprites,
+      zadnorMonsterLocations.Zone1.Star,
+      zadnorMonsterLocations.Zone2.Star,
+      zadnorMonsterLocations.Zone3.Star,
+      zadnorTenacityCEs,
+    ],
+  },
 };

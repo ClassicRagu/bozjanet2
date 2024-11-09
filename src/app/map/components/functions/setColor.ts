@@ -1,4 +1,4 @@
-export const setColor = (level) => {
+export const setColor = (level: number | string) => {
     switch (level) {
       case 1:
         return "green";

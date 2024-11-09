@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import * as React from "react";
 import { Card } from "@mui/material";
 import {
@@ -6,23 +6,28 @@ import {
   ImageOverlay,
   Popup,
   Marker,
+  Circle,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { fragments } from "../locations/Actions";
-import { Icon } from "leaflet";
+import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "../hooks/fragmentState";
 import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
+import { mapXY } from "./functions/mapXY";
+import { ZadnorClusterMobs } from "../locations/ZadnorClusterMobs";
+import { magitekState } from "../hooks/magitekState";
 
-const bounds = [
-  [34, 9],
-  [32, 11.4],
+const bounds: LatLngBoundsExpression = [
+  [1, 1],
+  [42, 42],
 ];
 
 function ZadnorFragmentMap() {
   const [fragment] = useAtom(fragmentState);
-  const [zadnorMarkers] = useAtom(zadnorMarkerState)
+  const [magitek] = useAtom(magitekState);
+  const [zadnorMarkers] = useAtom(zadnorMarkerState);
 
   return (
     <div
@@ -45,18 +50,31 @@ function ZadnorFragmentMap() {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "100%", height: "600px" }} className="App">
+        <div style={{ width: "100%", height: "650px" }} className="App">
           <MapContainer
-            center={[33, 10.18]}
-            zoom={8.499}
-            maxZoom={11}
-            minZoom={8.499}
+            center={[21.5, 21.5]}
+            zoom={4}
+            minZoom={4}
+            maxZoom={8}
             style={{ width: "100%", height: "100%" }}
-            zoomControl={false}
+            crs={L.CRS.Simple}
+            bounds={bounds}
           >
+            {magitek
+              ? ZadnorClusterMobs.map((x, index) => {
+                  return (
+                    <Circle
+                      key={`cluster-mob-${index}`}
+                      center={mapXY(x[0], x[1]) as LatLngTuple}
+                      radius={0.06}
+                      color={"grey"}
+                    ></Circle>
+                  );
+                })
+              : null}
             {fragment && fragments[fragment].Dal ? (
               <Marker
-                position={[33.6, 10.4]}
+                position={mapXY(25.9, 8.2) as LatLngTuple}
                 icon={
                   new Icon({
                     iconUrl: "CLL.png",
@@ -69,10 +87,7 @@ function ZadnorFragmentMap() {
               </Marker>
             ) : null}
             {zadnorMarkers}
-            <ImageOverlay
-              url="Zadnor.jpg"
-              bounds={bounds}
-            />
+            <ImageOverlay url="Zadnor.jpg" bounds={bounds} />
           </MapContainer>
         </div>
       </Card>
