@@ -1,5 +1,5 @@
 "use client";
-import { openRelicState } from "@/hooks/openRelicState";
+import { openRelicState } from "@/hooks/relic/openRelicState";
 import { ExpandMore } from "@mui/icons-material";
 import {
   Accordion,

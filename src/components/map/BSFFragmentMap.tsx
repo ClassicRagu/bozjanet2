@@ -7,14 +7,14 @@ import {
   Marker, Circle
 } from "react-leaflet";
 
-import { fragments } from "../locations/Actions";
+import { fragments } from "@/static/map/Actions";
 import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
-import { fragmentState } from "../hooks/fragmentState";
-import { bsfMarkerState } from "../hooks/bsfMarkerState";
-import { mapXY } from "./functions/mapXY";
-import { BSFClusterMobs } from "../locations/BSFClusterMobs";
-import { magitekState } from "../hooks/magitekState";
+import { fragmentState } from "@/hooks/map/fragmentState";
+import { bsfMarkerState } from "../../app/map/hooks/bsfMarkerState";
+import { mapXY } from "@/functions/map/mapXY";
+import { BSFClusterMobs } from "@/static/map/BSFClusterMobs";
+import { magitekState } from "@/hooks/map/magitekState";
 
 const bounds: LatLngBoundsExpression = [
   [1, 1],

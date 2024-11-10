@@ -5,7 +5,7 @@ import BozjaAccordians, {
 } from "../components/shared/BozjaAccordians";
 import { Box, Grid2 } from "@mui/material";
 
-const guides = require("../static/home/guides.json");
+const guides = require("@/static/home/guides.json");
 
 export default function Home() {
   const formattedGuides: React.JSX.Element[] = [];

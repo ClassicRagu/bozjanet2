@@ -2,7 +2,7 @@ import BozjaAccordians from "@/components/shared/BozjaAccordians";
 import { Box, Grid2, Link } from "@mui/material";
 import * as React from "react";
 
-const faqs = require("../../static/FAQ/FAQ.json");
+const faqs = require("@/static/FAQ/FAQ.json");
 
 type FAQ = {
   Name: string;

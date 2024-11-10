@@ -10,14 +10,14 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { fragments } from "../locations/Actions";
+import { fragments } from "@/static/map/Actions";
 import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
-import { fragmentState } from "../hooks/fragmentState";
-import { zadnorMarkerState } from "../hooks/zadnorMarkerState";
-import { mapXY } from "./functions/mapXY";
-import { ZadnorClusterMobs } from "../locations/ZadnorClusterMobs";
-import { magitekState } from "../hooks/magitekState";
+import { fragmentState } from "@/hooks/map/fragmentState";
+import { zadnorMarkerState } from "../../app/map/hooks/zadnorMarkerState";
+import { mapXY } from "@/functions/map/mapXY";
+import { ZadnorClusterMobs } from "@/static/map/ZadnorClusterMobs";
+import { magitekState } from "@/hooks/map/magitekState";
 
 const bounds: LatLngBoundsExpression = [
   [1, 1],

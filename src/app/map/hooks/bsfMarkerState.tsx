@@ -1,11 +1,11 @@
 import { atom } from "jotai";
-import { fragmentState } from "./fragmentState";
-import { fragments } from "../locations/Actions";
+import { fragmentState } from "../../../hooks/map/fragmentState";
+import { fragments } from "../../../static/map/Actions";
 import { Circle, Popup, Marker, Polygon } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { setColor } from "../components/functions/setColor";
+import { setColor } from "@/functions/map/setColor";
 import { Icon, LatLngExpression, LatLngTuple } from "leaflet";
-import { mapXY } from "../components/functions/mapXY";
+import { mapXY } from "@/functions/map/mapXY";
 
 export const bsfMarkerState = atom((get) => {
   const fragment = get(fragmentState);

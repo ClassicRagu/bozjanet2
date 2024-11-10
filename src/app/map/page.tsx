@@ -15,17 +15,17 @@ import {
   actions,
   fragments,
   fragmentList,
-} from "./locations/Actions";
+} from "@/static/map/Actions";
 import { useAtom } from "jotai";
-import { fragmentState } from "./hooks/fragmentState";
+import { fragmentState } from "@/hooks/map/fragmentState";
 import dynamic from "next/dynamic";
-import { magitekState } from "./hooks/magitekState";
+import { magitekState } from "@/hooks/map/magitekState";
 
-const BSFFragmentMap = dynamic(() => import("./components/BSFFragmentMap"), {
+const BSFFragmentMap = dynamic(() => import("@/components/map/BSFFragmentMap"), {
   ssr: false,
 });
 const ZadnorFragmentMap = dynamic(
-  () => import("./components/ZadnorFragmentMap"),
+  () => import("@/components/map/ZadnorFragmentMap"),
   { ssr: false }
 );
 

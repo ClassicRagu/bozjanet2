@@ -6,7 +6,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Grid2, Link } from "@mui/material";
-import { openKeyState } from "@/hooks/openKeyState";
+import { openKeyState } from "@/hooks/shared/openKeyState";
 import { useAtom } from "jotai";
 
 export type BozjaAccordianProps = {
