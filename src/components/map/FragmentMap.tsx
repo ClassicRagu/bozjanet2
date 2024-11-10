@@ -37,6 +37,7 @@ function FragmentMap(props: FragmentMapProps) {
       style={{
         justifyContent: "center",
         justifyItems: "center",
+        display:"flex"
       }}
     >
       <Card
