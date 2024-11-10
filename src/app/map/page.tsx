@@ -4,11 +4,8 @@ import {
   Autocomplete,
   Checkbox,
   FormControl,
-  FormControlLabel,
-  Link,
-  TextField,
+  FormControlLabel, TextField
 } from "@mui/material";
-import { Card } from "@mui/material";
 import "leaflet/dist/leaflet.css";
 
 import {
@@ -22,15 +19,11 @@ import { fragmentState } from "@/hooks/map/fragmentState";
 import dynamic from "next/dynamic";
 import { magitekState } from "@/hooks/map/magitekState";
 
-const BSFFragmentMap = dynamic(
-  () => import("@/components/map/BSFFragmentMap"),
+const FragmentMap = dynamic(
+  () => import("@/components/map/FragmentMap"),
   {
     ssr: false,
   }
-);
-const ZadnorFragmentMap = dynamic(
-  () => import("@/components/map/ZadnorFragmentMap"),
-  { ssr: false }
 );
 
 // This map pages will need to be moved to TS eventually. I'm leaving them
@@ -125,10 +118,10 @@ function FragmentLookup() {
           fragments[fragment].DRS ||
           (fragments[fragment].Quartermaster &&
             !fragments[fragment].Zadnor)) ? (
-          <BSFFragmentMap />
+          <FragmentMap mapName="BSF" />
         ) : null}
         {fragment && (fragments[fragment].Zadnor || fragments[fragment].Dal) ? (
-          <ZadnorFragmentMap />
+          <FragmentMap mapName="Zadnor" />
         ) : null}
     </>
   );

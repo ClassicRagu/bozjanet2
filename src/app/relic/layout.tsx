@@ -1,5 +1,4 @@
 import DefaultBox from "@/components/shared/DefaultBox";
-import { Box, Card } from "@mui/material";
 
 function RelicLayout({
   children,

@@ -4,7 +4,8 @@ import {
   MapContainer,
   ImageOverlay,
   Popup,
-  Marker, Circle
+  Marker,
+  Circle,
 } from "react-leaflet";
 
 import { fragments } from "@/static/map/Actions";
@@ -15,13 +16,19 @@ import { mapXY } from "@/functions/map/mapXY";
 import { BSFClusterMobs } from "@/static/map/BSFClusterMobs";
 import { magitekState } from "@/hooks/map/magitekState";
 import { MapMarkers } from "./MapMarkers/MapMarkers";
+import { ZadnorClusterMobs } from "@/static/map/ZadnorClusterMobs";
 
 const bounds: LatLngBoundsExpression = [
   [1, 1],
   [42, 42],
 ];
 
-function BSFFragmentMap() {
+type FragmentMapProps = {
+  mapName: string
+}
+
+function FragmentMap(props: FragmentMapProps) {
+  const {mapName} = props;
   const [fragment] = useAtom(fragmentState);
   const [magitek] = useAtom(magitekState);
 
@@ -56,7 +63,7 @@ function BSFFragmentMap() {
             crs={L.CRS.Simple}
             bounds={bounds}
           >
-            {magitek
+            {magitek && mapName == "BSF"
               ? BSFClusterMobs.map((x, index) => {
                   return (
                     <Circle
@@ -68,7 +75,18 @@ function BSFFragmentMap() {
                   );
                 })
               : null}
-
+            {magitek && mapName == "Zadnor"
+              ? ZadnorClusterMobs.map((x, index) => {
+                  return (
+                    <Circle
+                      key={`cluster-mob-${index}`}
+                      center={mapXY(x[0], x[1]) as LatLngTuple}
+                      radius={0.06}
+                      color={"grey"}
+                    ></Circle>
+                  );
+                })
+              : null}
             {fragment && fragments[fragment].Quartermaster ? (
               <Marker
                 position={mapXY(14.2, 29.6) as LatLngTuple}
@@ -113,8 +131,22 @@ function BSFFragmentMap() {
                 </Popup>
               </Marker>
             ) : null}
-            <MapMarkers fragment={fragment} zone={fragments[fragment].BSF} />
-            <ImageOverlay url="The Bozjan Southern Front.jpg" bounds={bounds} />
+            {fragment && fragments[fragment].Dal ? (
+              <Marker
+                position={mapXY(25.9, 8.2) as LatLngTuple}
+                icon={
+                  new Icon({
+                    iconUrl: "CLL.png",
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 25],
+                  })
+                }
+              >
+                <Popup>First Boss Dal Chest</Popup>
+              </Marker>
+            ) : null}
+            <MapMarkers fragment={fragment} zone={mapName == "BSF" ? fragments[fragment].BSF : fragments[fragment].Zadnor} />
+            <ImageOverlay url={mapName == "BSF" ? "The Bozjan Southern Front.jpg" : "Zadnor.jpg"} bounds={bounds} />
           </MapContainer>
         </div>
       </Card>
@@ -122,4 +154,4 @@ function BSFFragmentMap() {
   );
 }
 
-export default BSFFragmentMap;
+export default FragmentMap;
