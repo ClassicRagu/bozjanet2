@@ -14,10 +14,10 @@ import { fragments } from "@/static/map/Actions";
 import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "@/hooks/map/fragmentState";
-import { zadnorMarkerState } from "../../app/map/hooks/zadnorMarkerState";
 import { mapXY } from "@/functions/map/mapXY";
 import { ZadnorClusterMobs } from "@/static/map/ZadnorClusterMobs";
 import { magitekState } from "@/hooks/map/magitekState";
+import { MapMarkers } from "./MapMarkers/MapMarkers";
 
 const bounds: LatLngBoundsExpression = [
   [1, 1],
@@ -27,7 +27,6 @@ const bounds: LatLngBoundsExpression = [
 function ZadnorFragmentMap() {
   const [fragment] = useAtom(fragmentState);
   const [magitek] = useAtom(magitekState);
-  const [zadnorMarkers] = useAtom(zadnorMarkerState);
 
   return (
     <div
@@ -86,7 +85,7 @@ function ZadnorFragmentMap() {
                 <Popup>First Boss Dal Chest</Popup>
               </Marker>
             ) : null}
-            {zadnorMarkers}
+            <MapMarkers fragment={fragment} zone={fragments[fragment].Zadnor} />
             <ImageOverlay url="Zadnor.jpg" bounds={bounds} />
           </MapContainer>
         </div>

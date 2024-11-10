@@ -11,10 +11,10 @@ import { fragments } from "@/static/map/Actions";
 import L, { Icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import { useAtom } from "jotai";
 import { fragmentState } from "@/hooks/map/fragmentState";
-import { bsfMarkerState } from "../../app/map/hooks/bsfMarkerState";
 import { mapXY } from "@/functions/map/mapXY";
 import { BSFClusterMobs } from "@/static/map/BSFClusterMobs";
 import { magitekState } from "@/hooks/map/magitekState";
+import { MapMarkers } from "./MapMarkers/MapMarkers";
 
 const bounds: LatLngBoundsExpression = [
   [1, 1],
@@ -24,7 +24,6 @@ const bounds: LatLngBoundsExpression = [
 function BSFFragmentMap() {
   const [fragment] = useAtom(fragmentState);
   const [magitek] = useAtom(magitekState);
-  const [bsfMarkers] = useAtom(bsfMarkerState);
 
   return (
     <div
@@ -115,7 +114,7 @@ function BSFFragmentMap() {
                 </Popup>
               </Marker>
             ) : null}
-            {bsfMarkers}
+            <MapMarkers fragment={fragment} zone={fragments[fragment].BSF} />
             <ImageOverlay url="The Bozjan Southern Front.jpg" bounds={bounds} />
           </MapContainer>
         </div>

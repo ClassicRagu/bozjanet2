@@ -1,3 +1,4 @@
+import { Fragments } from "@/types/map/Fragments";
 import { bsfMonsterLocations } from "./BSFMonsterLocations";
 import { zadnorMonsterLocations } from "./ZadnorMonsterLocations";
 
@@ -596,25 +597,6 @@ export const fragmentList = [
   "Transcendence",
   "Violence",
 ];
-
-type Fragments = {
-  BSF?: MonsterLocation[][];
-  Zadnor?: MonsterLocation[][];
-  Quartermaster?: boolean
-  CLL?: boolean
-  Dal?: boolean
-  DR?: boolean
-  DRS?: boolean
-};
-
-type MonsterLocation = {
-  Monster: string;
-  Level: number | string;
-  Positions?: number[][];
-  Location?: number[];
-  radius?: number;
-  additionalInfo?: string;
-};
 
 export const fragments: { [key: string]: Fragments } = {
   Skill: { BSF: [bsfMonsterLocations.Zone1.Normal] },
