@@ -31,7 +31,6 @@ function ZadnorFragmentMap() {
   return (
     <div
       style={{
-        display: "flex",
         justifyContent: "center",
         justifyItems: "center",
       }}

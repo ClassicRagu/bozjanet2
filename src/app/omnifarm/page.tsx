@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import {
-  Box, Card, Link, Modal
+  Box, Link, Modal
 } from "@mui/material";
 
 function Relic() {
@@ -10,26 +10,6 @@ function Relic() {
 
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Card
-          variant="outlined"
-          sx={{
-            maxWidth: 800,
-            width: "100%",
-          }}
-          style={{
-            textAlign: "center",
-            display: "column",
-            justifyItems: "center",
-            justifyContent: "center",
-          }}
-        >
           <h2>
             <Link href="https://docs.google.com/document/d/1oAqt15SuzRPWgyr8CQUior57mPBDSJEej7N98jKCCpQ/edit#heading=h.tfrzpvg55vi8">
               Full Guide
@@ -66,8 +46,6 @@ function Relic() {
               setLoadoutModelState(true);
             }}
           />
-        </Card>
-      </Box>
       <Modal
         open={pizzaModelState}
         onClose={() => setPizzaModelState(false)}
