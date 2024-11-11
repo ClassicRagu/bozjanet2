@@ -113,4 +113,30 @@ export const listEurekaFarms: EurekaFarm[] = [
       },
     ],
   },
+  {
+    name: "Bozjan Southern Front",
+    farms: [
+      {
+        name: "Care",
+        weatherIcon: "/weathericons/Dust Storms.png",
+        info: {
+          weathers: ["Dust Storms", "Wind"],
+          time: -1,
+        },
+      },
+    ],
+  },
+  {
+    name: "Zadnor",
+    farms: [
+      {
+        name: "Artistry",
+        weatherIcon: "/weathericons/Showers.png",
+        info: {
+          weathers: ["Rain"],
+          time: -1,
+        },
+      },
+    ],
+  },
 ];
