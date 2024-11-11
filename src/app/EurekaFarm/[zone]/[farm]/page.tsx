@@ -18,13 +18,13 @@ function Weather({ params }: { params: Promise<{ zone: string; farm: string }> }
   const [weekState, setWeekState] = React.useState(1);
   const [findSnowState, setFindSnowState] = React.useState(2);
   const [snowState, setSnowState] = React.useState<WindowTimes[] | null>(null);
-  const [zoneValue, setZoneValue] = React.useState(zone);
+  const [zoneValue, setZoneValue] = React.useState(zone.replaceAll("%20", " "));
   const [farmValue, setFarmValue] = React.useState(
     farm.replaceAll("%20", " ")
   );
   const [farmInfo, setFarmInfo] = React.useState<FarmInfo>(
     listEurekaFarms
-      .find((x) => x.name == zone)
+      .find((x) => x.name == zone.replaceAll("%20", " "))
       ?.farms.find((x) => x.name == farm.replaceAll("%20", " "))?.info ?? {
       weathers: [""],
       time: -1,
@@ -47,7 +47,7 @@ function Weather({ params }: { params: Promise<{ zone: string; farm: string }> }
   React.useEffect(() => {
     const farmName = farm.replaceAll("%20", " ");
     const farmVals = listEurekaFarms
-      .find((x) => x.name == zone)
+      .find((x) => x.name == zone.replaceAll("%20", " "))
       ?.farms.find((x) => x.name == farmName)?.info ?? {
       weathers: [""],
       time: -1,
@@ -58,7 +58,7 @@ function Weather({ params }: { params: Promise<{ zone: string; farm: string }> }
         new Date(),
         1,
         2,
-        zone,
+        zone.replaceAll("%20", " "),
         farmVals.weathers,
         farmVals.time
       )
