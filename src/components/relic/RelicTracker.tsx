@@ -89,7 +89,7 @@ function RelicTracker() {
 
   return (
     <>
-      <div style={{ margin: "10px", textAlign: "left" }}>
+      <div style={{ padding: "10px", textAlign: "left", width: "100%", paddingTop: "0px" }}>
         <RelicRemainingItems />
         <Grid2
           container
@@ -143,7 +143,7 @@ function RelicTracker() {
             </Button>
           </Grid2>
         </Grid2>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{marginTop: "10px"}}>
           <Table>
             <TableHead>
               <TableRow>

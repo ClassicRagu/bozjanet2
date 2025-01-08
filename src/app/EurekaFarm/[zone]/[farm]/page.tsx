@@ -98,6 +98,7 @@ function Weather({ params }: { params: Promise<{ zone: string; farm: string }> }
               alignItems: "center",
               display: "flex",
               marginBottom: "10px",
+              width: "100%"
             }}
           >
             {

@@ -13,7 +13,6 @@ function RelicToggle({ mode }: { mode: string }) {
       style={{
         minHeight: "75px",
         maxWidth: "1000px",
-        marginBottom: "5px",
         alignItems: "top",
         justifyContent: "center",
         width: "100%",
