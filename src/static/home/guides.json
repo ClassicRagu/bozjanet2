@@ -53,8 +53,10 @@
     "Name": "DRN",
     "Guides": [
       ["DRN Speedrun Guide", "https://docs.google.com/presentation/d/1QP7R6tUbwSNWX30crFon2z3xhfe0m5NPu7pCySyI6r4/edit#slide=id.p"],
-      ["5 Person DRN Loadouts", "https://i.imgur.com/tjgIByv.png"],
-      ["8 Person DRN Loadouts", "https://i.imgur.com/OmaJ15C.png"],
+      ["Rank 12-14 DRN Loadouts", "https://bozja.net/FirstDRNLoadouts.png"],
+      ["Budget/Beginner DRN Loadouts", "https://bozja.net/BudgetDRN.png"],
+      ["Ideal 5 Person DRN Loadouts", "https://i.imgur.com/tjgIByv.png"],
+      ["Ideal 8 Person DRN Loadouts", "https://i.imgur.com/OmaJ15C.png"],
       ["CEM 24 Person DRN Loadouts", "https://i.imgur.com/y0jNEno.png"]
     ]
   },
@@ -64,6 +66,7 @@
       ["CLL + Dal Strategies", "https://docs.google.com/presentation/d/1IXJalAFUasymj1nIxfF2ihi4wR7MpetGHJO41kgqZa4/edit?usp=sharing"],
       ["CLL + Dal Scaling", "https://docs.google.com/spreadsheets/d/15VOR-2mV-vJUaptjEQRKQzommbh7T02K69wsb0UXq_U/edit?usp=sharing"],
       ["CLL + Dal Spawning Logic", "https://docs.google.com/document/d/1nDnR3vjzUqkx30JbzPZE2oNZoFSIQfv3D3kRW2vGZ5I/edit?usp=sharing"],
+      ["Dal Beginner Loadouts", "https://bozja.net/DalLoadouts.png"],
       ["CLL Action Cheat Sheet", "https://i.imgur.com/RkP5ERW.png"],
       ["Dal Action Cheat Sheet", "https://i.imgur.com/H0LkztK.png"]
     ]
