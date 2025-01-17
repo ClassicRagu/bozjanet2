@@ -52,6 +52,46 @@ export default function RootLayout({
                     width: "100%",
                   }}
                 >
+                    <Grid2
+                      style={{
+                        display: "flex",
+                        alignContent: "center",
+                        justifyContent: "center",
+                        maxHeight: "50px",
+                        minWidth: "250px",
+                      }}
+                    >
+                      <Button
+                        component={NextLink}
+                        size="large"
+                        style={{ minWidth: "250px", backgroundColor:"white" }}
+                        variant={"contained"}
+                        href={"./future"}
+                      >
+                        The Future of Bozja.net
+                      </Button>
+                    </Grid2>
+                </Grid2>
+              </Box>
+              <Box
+                style={{
+                  display: "flex",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Grid2
+                  container
+                  spacing={2}
+                  style={{
+                    minHeight: "75px",
+                    maxWidth: "1250px",
+                    marginBottom: "5px",
+                    alignItems: "top",
+                    justifyContent: "center",
+                    width: "100%",
+                  }}
+                >
                   {routes.map((route, index) => (
                     <Grid2
                       key={`${route.name}-${index}`}
